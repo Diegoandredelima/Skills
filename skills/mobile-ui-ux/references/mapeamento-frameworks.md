@@ -10,7 +10,7 @@ As linhas de React Native/Expo acrescentam as bibliotecas usuais do ecossistema;
 | --- | --- |
 | Compose | `MaterialTheme(colorScheme, typography, shapes)`; `dynamicLightColorScheme(ctx)` / `dynamicDarkColorScheme(ctx)` no Android 12+, com fallback `lightColorScheme()` / `darkColorScheme()` via `isSystemInDarkTheme()`. |
 | SwiftUI | Cores semânticas do sistema (`label` … `quaternaryLabel`, `.primary`, `.secondary`); Liquid Glass via `.glassEffect()` (regular por padrão, em cápsula; variante clear) coordenado por `GlassEffectContainer`. |
-| Flutter | `ThemeData(useMaterial3: true, colorScheme: ColorScheme.fromSeed(...))`; superfície por elevação (`surfaceAtElevation`); harmonizar cor de marca com o primary em HCT. |
+| Flutter | `ThemeData(useMaterial3: true, colorScheme: ColorScheme.fromSeed(...))`; superfícies por tom (`colorScheme.surfaceContainerLowest` a `surfaceContainerHighest`, ou `ElevationOverlay.applySurfaceTint`); harmonizar cor de marca em HCT via `Blend.harmonize` (`material_color_utilities`). |
 | React Native/Expo | Tokens exportados (`md.sys.*` ou JSON W3C Design Tokens) num objeto de tema; `useColorScheme()` para claro/escuro; nenhum hex no componente — sempre `theme.color.surface` etc. |
 
 ## Tipografia e escala dinâmica
@@ -36,8 +36,8 @@ As linhas de React Native/Expo acrescentam as bibliotecas usuais do ecossistema;
 | Framework | Como fazer |
 | --- | --- |
 | Compose | `WindowSizeClass` (Compact/Medium/Expanded) alternando `NavigationBar` → `NavigationRail` → `PermanentNavigationDrawer`; `NavigationSuiteScaffold` / `ListDetailPaneScaffold` (material3-adaptive). |
-| SwiftUI | `TabView` com `.tabViewStyle(.sidebarAdaptable)`, `.tabBarMinimizeBehavior(.onScrollDown)`, `Tab(role: .search)`; `NavigationSplitView` para colunas. |
-| Flutter | Breakpoints 0/600/840/1200/1600; `NavigationBar` ↔ `NavigationRail`; `flutter_adaptive_scaffold` (SlotLayout). |
+| SwiftUI | `TabView` com `.tabViewStyle(.sidebarAdaptable)` (iOS 18+), `.tabBarMinimizeBehavior(.onScrollDown)` (iOS 26+), `Tab(role: .search)` (iOS 18+, destacada em Liquid Glass no iOS 26); `NavigationSplitView` para colunas. |
+| Flutter | Breakpoints 0/600/840/1200/1600; `NavigationBar` ↔ `NavigationRail` ↔ `NavigationDrawer` via `LayoutBuilder` / `MediaQuery.sizeOf` (nota: `flutter_adaptive_scaffold` / `SlotLayout` foi descontinuado no `pub.dev`). |
 | React Native/Expo | `useWindowDimensions()` + breakpoints 600/840/1200; tabs embaixo < 600dp, rail/sidebar acima; `react-native-safe-area-context` (`useSafeAreaInsets`, `SafeAreaView`) para áreas do sistema; coluna central com `maxWidth` em tablet. |
 
 ## SafeArea e teclado
@@ -54,9 +54,9 @@ As linhas de React Native/Expo acrescentam as bibliotecas usuais do ecossistema;
 | Framework | Como fazer |
 | --- | --- |
 | Compose | `MotionScheme.expressive()` / `standard()` (`@OptIn(ExperimentalMaterial3ExpressiveApi::class)`); `spring(dampingRatio, stiffness)`; `HapticFeedbackConstants` / `LocalHapticFeedback`. |
-| SwiftUI | `.spring(duration:bounce:)`, `.smooth`, `.snappy`, `.interactiveSpring()`; `UIImpactFeedbackGenerator`, `UINotificationFeedbackGenerator`, `.sensoryFeedback(...)`, Core Haptics. |
+| SwiftUI | `.spring(duration:bounce:)`, `.smooth`, `.snappy` (iOS 17+), `.interactiveSpring()`; `UIImpactFeedbackGenerator`, `UINotificationFeedbackGenerator`, `.sensoryFeedback(_:trigger:)` (iOS 17+), Core Haptics. |
 | Flutter | `SpringDescription` / `SpringSimulation`; `HapticFeedback.lightImpact()` etc. |
-| React Native/Expo | `react-native-reanimated` (`withSpring({ dampingRatio, stiffness })` / `withTiming` com `Easing.bezier`); `useReducedMotion()` ou `AccessibilityInfo.isReduceMotionEnabled()`; `expo-haptics` (`impactAsync`, `notificationAsync`, `selectionAsync`). |
+| React Native/Expo | `react-native-reanimated` 3.0+ (`withSpring({ mass: 1, stiffness, damping })` no modo físico ou `withSpring({ duration, dampingRatio })` no modo por duração — não combinar os dois; `withTiming` com `Easing.bezier`); `useReducedMotion()` (3.0+) ou `AccessibilityInfo.isReduceMotionEnabled()`; `expo-haptics` (`impactAsync`, `notificationAsync`, `selectionAsync`). |
 
 ## Acessibilidade
 

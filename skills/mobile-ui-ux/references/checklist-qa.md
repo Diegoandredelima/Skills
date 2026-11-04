@@ -9,10 +9,10 @@ A skill especializada de cada pilar tem o detalhe para corrigir.
 - [ ] **Breakpoints e navegação.** < 600dp (Compact): 1 painel, margens 16dp/pt, Navigation Bar / Tab Bar
   (máx. 5 abas no iPhone). 600–839dp (Medium): margens 24dp/pt, Navigation Rail / Flexible Nav Bar, ou
   Sidebar recolhida (iPad retrato). ≥ 840dp: 2 painéis (lista 360dp + espaçador 24dp), Sidebar expandida 320pt
-  (iPad paisagem; ou Tab Bar até 8 abas) / Extended Rail 256dp.
+  (iPad paisagem; ou Tab Bar flutuante adaptativa) / Extended Rail 256dp.
   *Verificação:* redimensionar janela no iPadOS 26, emulador dobrável, preview multi-dispositivo.
 - [ ] **Thumb zone e gesto de voltar.** Ação primária na metade inferior; destrutiva longe do polegar, com
-  confirmação e sem papel de primária. Predictive Back (Android) e back swipe (iOS) funcionando;
+  confirmação e sem papel de primária. Predictive Back (Android 13/14 com `android:enableOnBackInvokedCallback="true"`; padrão no Android 15+) e back swipe (iOS) funcionando;
   `systemGestureExclusion()` em carrosséis horizontais.
   *Verificação:* uso com uma mão no maior telefone suportado; cancelar o gesto de voltar no meio.
 
@@ -30,12 +30,11 @@ A skill especializada de cada pilar tem o detalhe para corrigir.
 
 - [ ] **Semântica, elevação tonal e modo escuro.** Zero hex/RGB hardcoded na UI. 5 níveis de
   surface-container e pares `on-*` corretos. `outline` em campos, `outline-variant` em divisores. Elevação
-  por tom (+5% a +14% primary, de 1 a 12dp).
+  comunicada pelos 5 `surface-containers` (ou `surfaceTint` +5% a +14% primary de 1 a 12dp onde aplicável).
   *Verificação:* preview em modo noturno, dynamic color ligado (Android 12+), contraste médio e alto.
 - [ ] **Liquid Glass (iOS 26).** Vidro só na camada de navegação/controles; nada em conteúdo; nada de vidro
-  sobre vidro; `GlassEffectContainer`; camada escura de 35% sob a variante clear em mídia clara. Orçamento:
-  ≤ 4 camadas de composição por tela; blur ≤ 40px (iPhone) / 60px (iPad).
-  *Verificação:* Instruments (GPU), Reduce Transparency, Increase Contrast, modo Tinted.
+  sobre vidro; agrupar elementos próximos em `GlassEffectContainer`; camada escura de 35% sob a variante clear em mídia clara.
+  *Verificação:* Instruments (GPU), Reduce Transparency, Increase Contrast, modos de aparência Clear e Tinted.
 
 ## 4. Motion e haptics — `mobile-motion-haptics`
 

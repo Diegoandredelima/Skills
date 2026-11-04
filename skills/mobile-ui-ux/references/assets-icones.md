@@ -2,7 +2,7 @@
 
 ## Resolução lógica e escala
 
-- Ferramentas de design trabalham a **@1x** em pt/dp lógicos (ex.: 375×812pt; 402×874pt no iPhone 17).
+- Ferramentas de design trabalham a **@1x** em pt/dp lógicos (ex.: 375×812pt; 402×874pt no iPhone 16 Pro).
   `px = pt × escala`; o total de pixels cresce com o quadrado da escala.
 - iOS: @1x só em aparelhos descontinuados; **@2x** em telas LCD (iPhone 11, XR) e iPads; **@3x** nos demais
   iPhones. Ex.: botão de 44pt = 88×88px @2x, 132×132px @3x. iPhone 6/6s/7/8 Plus renderiza @3x virtual
