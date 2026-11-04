@@ -1,0 +1,66 @@
+[
+  {
+    "query": "Terminamos o fluxo de fechamento de pedido em src/screens/CheckoutScreen.tsx e src/screens/PaymentConfirmationScreen.tsx no nosso app Expo 52. Antes de mandar pro TestFlight e pra faixa interna da Play Store, faz uma auditoria completa de UI/UX mobile (navegação, toque, dark mode, teclado, animações, acessibilidade e telas sensíveis) e monta o relatório de achados por severidade.",
+    "should_trigger": true
+  },
+  {
+    "query": "O time de design entregou no Figma apenas as telas de iPhone para o nosso app de telemedicina e quer replicar a mesma interface idêntica no Android em Jetpack Compose. Preciso de um guia comparativo do que deve seguir a convenção nativa de cada plataforma (navegação, barras, tipografia, ícones, gestos de voltar e feedback tátil) para orientar o handoff com os desenvolvedores.",
+    "should_trigger": true
+  },
+  {
+    "query": "Estou preparando os assets do nosso app nativo para o lançamento no iOS 26 e Android 15 e fiquei na dúvida sobre o ícone mestre de 1024x1024px em camadas no Icon Composer para funcionar nos modos claro, escuro, transparente e tonalizado. Além disso, como devo configurar os ícones vetoriais equivalentes entre SF Symbols no SwiftUI e a fonte variável Material Symbols (pesos, optical size e fill) no Compose?",
+    "should_trigger": true
+  },
+  {
+    "query": "to com um bug visual chato na tela de extrato (app/wallet/StatementList.tsx) em React Native: os divisores de 1px tão ficando grossos demais no iPhone 16 Pro e serrilhados em alguns Androids. Como calculo a espessura de hairline certa respeitando a escala física da tela (@2x/@3x, displayScale) e qual o padrão de assets pra não carregar PNG pesado à toa?",
+    "should_trigger": true
+  },
+  {
+    "query": "Vamos iniciar um novo aplicativo mobile corporativo de inspeção de campo e estamos comparando como implementar o design system nativo em Flutter 3.27 versus React Native com Expo. Você pode mapear como cada decisão de interface — cores dinâmicas, tipografia escalável, layout adaptativo para tablet, tratamento de teclado/SafeArea, molas e biometria — se traduz nas APIs e bibliotecas de cada um desses frameworks?",
+    "should_trigger": true
+  },
+  {
+    "query": "A tela inicial do nosso app bancário em lib/features/home/presentation/home_page.dart (Flutter) está com cara de site web improvisado: botões pequenos no topo, cores chapadas em hexadecimal, sem resposta tátil e quebrando quando o usuário aumenta a fonte do celular. Quero redesenhar e refatorar essa tela inteira seguindo boas práticas modernas de engenharia de interface mobile para iOS e Android.",
+    "should_trigger": true
+  },
+  {
+    "query": "Nosso app de leitura de relatórios em SwiftUI (Views/ReportReaderView.swift) e Kotlin Compose (ui/reader/ReportReaderScreen.kt) vai passar por uma revisão geral de qualidade visual antes da release 2.0. Preciso de um checklist prático pra validar adaptação em iPad e tablet Android, margens, contraste, alvos de toque, redução de movimento e proteção de dados na tela.",
+    "should_trigger": true
+  },
+  {
+    "query": "Temos a tela de perfil e configurações pronta em Jetpack Compose (app/src/main/java/com/acme/profile/ProfileScreen.kt) e agora precisamos criar a versão equivalente em SwiftUI para iOS 26. Quais componentes, materiais translúcidos, padrões de barra, símbolos e comportamentos de rolagem e acessibilidade devemos usar no iOS para que o app pareça 100% nativo em vez de um clone de Android?",
+    "should_trigger": true
+  },
+  {
+    "query": "Terminamos o painel administrativo web da nossa plataforma B2B em src/pages/admin/BillingDashboard.tsx usando Next.js 15, Tailwind CSS e shadcn/ui. Faça uma revisão completa de UI/UX para desktop (1440px e 1920px), avaliando a tabela de faturas com paginação, filtros laterais, atalhos de teclado Ctrl+K e densidade visual.",
+    "should_trigger": false
+  },
+  {
+    "query": "Preciso desenhar e implementar a landing page de lançamento do nosso aplicativo financeiro em Astro e CSS moderno (src/pages/index.astro), com seção hero mostrando mockups de iPhone, tabela comparativa de planos e rodapé responsivo para navegador mobile. Quero sugestões de tipografia editorial, grid CSS e animações de scroll com IntersectionObserver.",
+    "should_trigger": false
+  },
+  {
+    "query": "Estamos configurando o pipeline de release pré-publicação do nosso app React Native no GitHub Actions com Fastlane (fastlane/Fastfile). Como automatizo o incremento de versionCode no build.gradle, a assinatura com certificados de distribuição no Match para o TestFlight e o upload de sourcemaps para o Sentry?",
+    "should_trigger": false
+  },
+  {
+    "query": "No nosso app de vistoria em React Native (src/database/sync.ts), os fiscais trabalham sem internet e precisam sincronizar fotos e formulários com o backend PostgreSQL quando o sinal volta. Como estruturo a resolução de conflitos last-write-wins, fila de upload em background com expo-background-fetch e migrações de schema no WatermelonDB?",
+    "should_trigger": false
+  },
+  {
+    "query": "A nossa startup de entregas por aplicativo vai renovar a marca e precisa de um guia de identidade visual para o manual da marca. Quero definir a construção geométrica do logotipo, versões monocromáticas para impressão em sacolas kraft (CMYK e Pantone), ícones para redes sociais e templates de stories no Instagram.",
+    "should_trigger": false
+  },
+  {
+    "query": "Estamos construindo um cliente de banco de dados desktop para macOS e Windows usando Tauri v2 e React (src/components/QueryWorkspace.tsx). Como organizo o layout de painéis redimensionáveis com abas de SQL, árvore de schemas na lateral esquerda, barra de status inferior e menu nativo da barra de título do sistema operacional?",
+    "should_trigger": false
+  },
+  {
+    "query": "Quero refatorar a camada de domínio e dados do módulo de pedidos em Flutter (lib/features/orders/data/orders_repository.dart) usando Riverpod 2.6 com geração de código (@riverpod) e fpdart (Either<Failure, Order>). Como separo os casos de uso, interceptors de refresh token no Dio e testes unitários com mocktail?",
+    "should_trigger": false
+  },
+  {
+    "query": "Nossos clientes iOS e Android estão reclamando que o endpoint GET /api/v2/home-feed no nosso backend Node.js/Fastify demora 1,8s em redes 4G. Como desenho um BFF (Backend for Frontend) com paginação por cursor, compressão Brotli, cache no Redis e seleção de campos para reduzir o payload JSON enviado ao app?",
+    "should_trigger": false
+  }
+]

@@ -73,6 +73,8 @@ Skills/
 │       ├── references/      material lido sob demanda
 │       └── evals/           casos de teste (formato skill-creator / claude plugin eval)
 ├── pesquisas/               pesquisas-fonte de cada conjunto de skills
+├── auditoria/               verificação das APIs contra a documentação oficial (fontes, correções, relatório)
+│                            e pedidos de teste de ativação (gatilhos/)
 ├── scripts/                 install.ps1 / install.sh
 └── .claude-plugin/          manifesto de plugin e marketplace
 ```
@@ -93,3 +95,10 @@ Primeira rodada do conjunto mobile-ui-ux (3 casos, 1 execução cada, nov/2026):
 sem skill; a diferença apareceu na precisão (valores do M3, critério citado por achado), com ~16% a mais de
 tokens. Os critérios mais exigentes adicionados depois estão em
 [`skills/mobile-ui-ux/evals/`](skills/mobile-ui-ux/evals/README.md).
+
+## Auditoria
+
+Em nov/2026 os 118 nomes de API, versões, normas e valores citados no conjunto mobile-ui-ux foram conferidos
+contra a documentação oficial: 91 confirmados, 25 corrigidos, 1 não confirmado e 1 removido. Fontes e detalhes em
+[`auditoria/RELATORIO.md`](auditoria/RELATORIO.md). O texto integral da pesquisa não foi editado; a errata no topo
+de `skills/mobile-ui-ux/references/guia-completo.md` lista as divergências.

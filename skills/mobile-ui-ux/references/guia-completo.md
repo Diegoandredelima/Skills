@@ -3,6 +3,28 @@
 > Fonte: "Guia UI_UX e Engenharia Mobile.md" (pesquisa do usuário, nov/2026). Imagens removidas.
 > Números colados ao fim das frases são citações da pesquisa original.
 
+## Errata — leia antes de usar este texto
+
+O texto abaixo é a pesquisa **sem edição**. A auditoria de nov/2026 (`auditoria/RELATORIO.md` no repositório)
+conferiu as APIs e os números contra a documentação oficial e achou as divergências a seguir. **As skills
+deste conjunto já estão corrigidas e prevalecem sobre este texto**; use-o só para contexto e nuance.
+
+| Trecho da pesquisa | Correto |
+| --- | --- |
+| Revisões do HIG "de setembro e outubro de 2026" | Não confirmado: o HIG não se organiza por revisões com esses meses |
+| Botão M3 "adaptativo 48dp toque / 32dp ponteiro" | Tamanhos M3 Expressive: XS 32, S 40, M 56, L 96, XL 136dp (alvo de toque ≥ 48dp) |
+| TextField M3 com raio 8dp e borda extraThick 4dp; escala de raios sem `large-increased` | TextField usa `extra-small` 4dp e borda 1dp (repouso) / 2dp (foco); a escala tem `large-increased` 20dp |
+| Cards iOS 26 com "frost 20–25 e depth ≤ 15" | Sem respaldo no HIG nem no SwiftUI — ignorar |
+| Botão de alternância da Sidebar de 31×22pt | Medida não consta no HIG — ignorar |
+| "402×874pt no iPhone 17" | 402×874pt é a resolução lógica do iPhone 16 Pro na tabela do HIG |
+| Orçamento Liquid Glass: ≤ 4 camadas, blur ≤ 40px (iPhone) / 60px (iPad) | Sem respaldo na documentação da Apple — validar custo no Instruments |
+| `M3ColorUtils.harmonize(...)` e `surfaceAtElevation` (Flutter) | `MaterialColors.harmonize` / `harmonizeWithPrimary` (Android), `Blend.harmonize` (`material_color_utilities`); Flutter usa `surfaceContainerLowest`…`surfaceContainerHighest` |
+| "Liquid Glass Toggle (iOS 26.1)" e "controles de transparência do iOS 27" | Especulação de blog — ignorar |
+| `withSpring({ dampingRatio, stiffness, mass })` no Reanimated | Modos exclusivos: físico (`mass`, `stiffness`, `damping`) ou por duração (`duration`, `dampingRatio`, Reanimated 3.2+); `mass` padrão no 4.x é 4 |
+| `HapticFeedbackConstants.CALENDAR_DATE` | Constante `@hide`, fora do SDK público |
+| `SecKeyCreateRandomPair` | A função é `SecKeyCreateRandomKey` |
+| `flutter_adaptive_scaffold` / `SlotLayout` | Pacote descontinuado no pub.dev |
+
 Sumário: 1. Fundamentos (M3 vs HIG, navegação, thumb zone) · 2. Componentes & layout (specs, grid, SafeArea/IME) · 3. Cores & tokens · 4. Motion & haptics · 5. Acessibilidade · 6. Segurança & privacidade · 7. Handoff, assets e checklist QA · Trabalhos citados
 
 # **Guia Arquitetural de Product Design e Engenharia de Interface Mobile (iOS e Android)**

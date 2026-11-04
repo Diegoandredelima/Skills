@@ -1,0 +1,66 @@
+[
+  {
+    "query": "Estou animando a abertura de um card expansível no nosso app React Native com react-native-reanimated 4.x (src/components/ExpandableCard.tsx). Coloquei withSpring(1, { dampingRatio: 0.7, stiffness: 380 }) tanto na altura quanto na cor de fundo: além da mola parecer pesada e lenta demais, a cor de fundo pisca num tom estranho quando passa de 1.0. Como configuro os parâmetros certos de mola para geometria versus cor/opacidade no Reanimated?",
+    "should_trigger": true
+  },
+  {
+    "query": "Quero adicionar feedback tátil consistente no nosso app de finanças em três momentos: quando o usuário gira a roleta de seleção de parcelas, quando confirma o pagamento com sucesso e quando tenta enviar um formulário com erro de validação. Quais APIs nativas uso no iOS (SwiftUI/UIKit) e no Android (Compose/View) — e no expo-haptics — sem precisar pedir a permissão android.permission.VIBRATE no manifesto?",
+    "should_trigger": true
+  },
+  {
+    "query": "A animação de abrir o nosso filtro lateral no app Flutter (lib/ui/modals/filter_sheet.dart) está ótima com 400ms, mas quando o usuário toca fora pra fechar, usar os mesmos 400ms com mola elástica faz o app parecer lerdo e ainda dá um quique estranho antes de sumir. Qual deve ser a proporção de tempo e a curva certa para a transição de saída e para o fade do scrim escuro?",
+    "should_trigger": true
+  },
+  {
+    "query": "Atualizamos o nosso projeto Android para o Compose Material 3 Expressive (ui/components/AnimatedFabMenu.kt) e queremos substituir todos os tween(300) antigos pelos novos tokens de mola do MotionScheme.expressive(). Quando devo escolher fastSpatial, defaultSpatial ou slowSpatial versus fastEffects/defaultEffects, e quais são os valores de dampingRatio e stiffness de cada um?",
+    "should_trigger": true
+  },
+  {
+    "query": "No nosso app SwiftUI para iOS 26 (Views/FloatingActionToolbar.swift), tenho um botão flutuante em Liquid Glass que se divide em três botões menores quando o usuário toca nele. Como faço a metamorfose fluida entre essas formas de vidro usando GlassEffectContainer e .glassEffectID, e qual preset de mola do SwiftUI (.smooth, .snappy ou .interactiveSpring) devo usar para gestos acoplados ao dedo?",
+    "should_trigger": true
+  },
+  {
+    "query": "Recebemos um relato de um usuário com sensibilidade vestibular dizendo que as animações de troca de aba e zoom de card no nosso app causam tontura, mesmo com 'Reduzir Movimento' ativado nos Ajustes do iPhone e do Android. Como detecto essa preferência em SwiftUI, Compose e Reanimated (useReducedMotion) e pelo que devo substituir o deslocamento espacial sem deixar a tela piscando a seco?",
+    "should_trigger": true
+  },
+  {
+    "query": "coloquei Haptics.selectionAsync() dentro do onValueChange de um Slider de valor de empréstimo em LoanSlider.tsx, mas quando o usuario arrasta o dedo rapido o celular parece uma britadeira vibrando sem parar e no modo silencioso quem não sente a vibração fica perdido. Qual o intervalo minimo entre pulsos hapticos e como deixar esse feedback elegante?",
+    "should_trigger": true
+  },
+  {
+    "query": "Quando o usuário toca em 'Curtir' ou troca de filtro na tela de produtos (ProductFeedScreen.kt), às vezes a resposta da API leva 180ms e às vezes 2,5 segundos no 4G, e hoje mostramos um CircularProgressIndicator girando em qualquer clique, o que dá uma sensação de tela piscando. Quais são os limiares de tempo de resposta na percepção humana para decidir entre resposta imediata, transição suave, skeleton screen e barra de progresso?",
+    "should_trigger": true
+  },
+  {
+    "query": "Estou criando a página institucional da nossa agência em HTML/CSS e GSAP ScrollTrigger (src/scripts/hero-animation.js). Quero que, conforme o visitante role a página no navegador desktop, os títulos entrem com efeito parallax, o SVG do logotipo seja desenhado com stroke-dashoffset e o fundo faça uma transição suave de gradiente CSS.",
+    "should_trigger": false
+  },
+  {
+    "query": "No nosso jogo de plataforma 2D feito em Unity (Assets/Scripts/PlayerController.cs), o personagem usa um SpringJoint2D para o gancho e queremos acionar os motores de baixa e alta frequência do controle DualSense (Gamepad.current.SetMotorSpeeds) quando ele sofre dano de explosão. Como ajusto a gravidade do Rigidbody2D?",
+    "should_trigger": false
+  },
+  {
+    "query": "Estou lendo os dados brutos do acelerômetro e giroscópio (Sensor.TYPE_ACCELEROMETER no SensorManager) em um app Android de telemetria veicular (Sensors/VibrationAnalyzer.kt) para detectar trepidação mecânica na suspensão do caminhão. Como implemento um filtro passa-baixa de Butterworth em Kotlin para remover ruído de alta frequência?",
+    "should_trigger": false
+  },
+  {
+    "query": "O nosso designer exportou uma ilustração animada do mascote no Adobe After Effects usando o plugin Bodymovin (assets/animations/mascot.json), mas algumas máscaras com efeito Merge Paths não aparecem no player lottie-react-native. Quais recursos do After Effects não são suportados pelo formato Lottie e como converter essas camadas em formas simples?",
+    "should_trigger": false
+  },
+  {
+    "query": "Na tabela de pedidos do nosso painel web administrativo em React (src/components/OrdersTable.module.css), quero colocar um transition: background-color 150ms ease-in-out quando o operador passa o mouse por cima da linha (:hover) e animar o ícone de ordenação da coluna com transform: rotate(180deg).",
+    "should_trigger": false
+  },
+  {
+    "query": "No nosso app de podcast em Swift (Audio/PodcastPlayer.swift), quando o usuário recebe uma ligação telefônica ou um alarme toca, o AVPlayer para e não volta a tocar depois que a interrupção termina. Como trato a notificação AVAudioSession.interruptionNotification e configuro a categoria .playback?",
+    "should_trigger": false
+  },
+  {
+    "query": "Preciso auditar a tela de resumo da fatura do nosso app mobile para garantir conformidade com a WCAG 2.2 AA: verificar se o contraste dos textos passa de 4.5:1, se os botões têm área de toque mínima de 48dp e se a ordem de leitura do TalkBack e do VoiceOver faz sentido.",
+    "should_trigger": false
+  },
+  {
+    "query": "Estamos gravando vídeos curtos pela câmera no nosso app e precisamos comprimir o arquivo MP4 em background usando ffmpeg-kit-react-native (src/services/videoTranscoder.ts) mantendo 60fps constantes em H.264 com bitrate de 4 Mbps. Quais flags do FFmpeg (-preset, -crf, -r 60) devo passar?",
+    "should_trigger": false
+  }
+]

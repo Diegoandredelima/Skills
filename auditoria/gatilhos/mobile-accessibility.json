@@ -1,0 +1,66 @@
+[
+  {
+    "query": "Quando ativo o maior tamanho de fonte de acessibilidade no iPhone (AX5) ou a escala de 200% no Android 14+, a nossa tela de lista de médicos em SwiftUI (Views/DoctorRowView.swift) e em React Native (src/components/DoctorCard.tsx) corta o nome do médico com reticências 'Dr. Jo...' e espreme o botão 'Agendar' ao lado da foto. Como adapto o layout para empilhar em coluna automaticamente nas escalas de acessibilidade sem truncar informação?",
+    "should_trigger": true
+  },
+  {
+    "query": "Testei a tela de carrinho do nosso app (CartItemRow.kt em Compose e CartItemView.swift em SwiftUI) com o TalkBack e o VoiceOver ligados: o leitor para em 6 elementos separados para cada produto, lê a imagem decorativa como 'unlabeled image' e no botão de lixeira só diz 'Botão'. Como agrupo o card numa única parada semântica, escondo o que é decorativo e adiciono ações customizadas de excluir e alterar quantidade?",
+    "should_trigger": true
+  },
+  {
+    "query": "Nosso aplicativo mobile de seguros vai ser lançado em Portugal e na Espanha e precisa cumprir o European Accessibility Act (EN 301 549 / WCAG 2.2 nível AA). Quero revisar nossas telas em relação aos novos critérios da WCAG 2.2 — especialmente foco não encoberto por barras fixas (2.4.11), alternativa simples para gestos de arrastar (2.5.7), tamanho mínimo de alvo de toque (2.5.8) e autenticação acessível (3.3.8).",
+    "should_trigger": true
+  },
+  {
+    "query": "Na tela de organização de prioridades do nosso app (TaskReorderScreen.tsx), o usuário só consegue reordenar os cartões segurando e arrastando com o dedo, e o slider de raio de distância só funciona arrastando. Como desenho alternativas de toque simples compatíveis com a WCAG 2.5.7 e com controle por voz / Switch Control?",
+    "should_trigger": true
+  },
+  {
+    "query": "o time de QA reprovou a tela de detalhes do imóvel (PropertyDetailScreen.dart em Flutter) porque o ícone de coração de favoritar e o 'X' de fechar o modal têm só 24x24px e todo mundo erra o toque com o dedão. Qual é o tamanho mínimo de área de toque exigido no iOS e no Android e como aumento a área clicável em Flutter, Compose e React Native sem precisar aumentar o desenho do ícone?",
+    "should_trigger": true
+  },
+  {
+    "query": "Quando o usuário aplica um cupom de desconto no nosso app, aparece um banner visual no topo dizendo 'Cupom aplicado: R$ 20 de desconto', mas quem usa VoiceOver ou TalkBack não recebe nenhum aviso sonoro porque o foco continua no botão. Quais são as APIs corretas para anunciar essa mudança em SwiftUI, Jetpack Compose, Flutter (SemanticsService) e React Native (AccessibilityInfo)?",
+    "should_trigger": true
+  },
+  {
+    "query": "O time de segurança pediu para bloquear o comando 'colar' (contextMenuHidden) no campo de senha da tela de login do nosso app mobile e colocar um desafio de somar dois números antes de entrar. Por que isso viola a acessibilidade moderna em dispositivos móveis e como podemos atender à WCAG 3.3.8 mantendo a segurança?",
+    "should_trigger": true
+  },
+  {
+    "query": "No nosso app iOS 26 e Android, alguns textos secundários cinza-claros sobre cards translúcidos estão com taxa de contraste de apenas 2.6:1 no Accessibility Inspector do Xcode. Quais são as taxas mínimas exigidas para texto normal, texto grande e ícones funcionais, e como o app deve reagir quando o usuário ativa 'Reduzir Transparência' ou 'Aumentar Contraste' no sistema?",
+    "should_trigger": true
+  },
+  {
+    "query": "Rodamos o axe DevTools e o Lighthouse na nossa página web de cadastro em React DOM (src/pages/RegisterPage.tsx) e apareceram erros de aria-labelledby órfão, falta de <main> landmark, ordem de tabindex quebrada na navegação por tecla Tab e <img alt=\"\"> faltando. Como corrijo o HTML semântico e os atributos WAI-ARIA para o leitor NVDA no Windows?",
+    "should_trigger": false
+  },
+  {
+    "query": "Precisamos gerar relatórios mensais em PDF pelo nosso backend Java que sejam compatíveis com o padrão PDF/UA (ISO 14289) para leitores de tela no computador. Como configuro as tags estruturais <H1>, <Table>, <TH> com escopo e texto alternativo de gráficos usando a biblioteca iText 8?",
+    "should_trigger": false
+  },
+  {
+    "query": "Temos um player de vídeo HTML5 (<video> com hls.js) no nosso portal de cursos online e precisamos carregar faixas <track kind=\"captions\" srclang=\"pt-BR\"> em formato WebVTT. Como estilizo a caixa da legenda via pseudo-elemento CSS ::cue para mudar a fonte e a posição na tela?",
+    "should_trigger": false
+  },
+  {
+    "query": "Estou criando um app utilitário no Android que herda de android.accessibilityservice.AccessibilityService (services/AutoClickerService.kt) para monitorar em segundo plano qual aplicativo está aberto na tela e clicar automaticamente no botão 'Pular anúncio' via performGlobalAction. Como configuro o XML accessibility-service no manifesto?",
+    "should_trigger": false
+  },
+  {
+    "query": "Quero criar uma paleta de 6 cores vibrantes para a campanha de verão da nossa marca de bebidas no Instagram, combinando tons complementares de laranja solar e azul turquesa. Você pode gerar os códigos hexadecimais, HSL e OKLCH com variações de luminosidade para os criativos?",
+    "should_trigger": false
+  },
+  {
+    "query": "Preciso implementar a geração de par de chaves EC P-256 dentro do Android Keystore com setUserAuthenticationParameters(0, AUTH_BIOMETRIC_STRONG) e assinar um nonce criptográfico enviado pelo backend usando BiometricPrompt.CryptoObject(signature), tratando KeyPermanentlyInvalidatedException quando o usuário cadastra uma nova digital.",
+    "should_trigger": false
+  },
+  {
+    "query": "Estamos traduzindo nosso app para árabe, japonês e espanhol usando i18next (src/locales/ar/common.json) e String Catalogs (.xcstrings) no Xcode. Como configuro as regras de pluralização CLDR (zero, one, two, few, many, other) e formatação de moedas com Intl.NumberFormat?",
+    "should_trigger": false
+  },
+  {
+    "query": "No nosso endpoint POST /api/v1/login em FastAPI (app/api/routes/auth.py), estamos sofrendo ataques de credential stuffing. Como valido o token do Cloudflare Turnstile no servidor Python e bloqueio IPs com mais de 5 tentativas por minuto usando Redis?",
+    "should_trigger": false
+  }
+]

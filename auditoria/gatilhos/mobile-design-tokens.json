@@ -1,0 +1,66 @@
+[
+  {
+    "query": "Nosso app React Native (src/theme/colors.ts) tem mais de 90 códigos hexadecimais soltos tipo #F5F5F5, #333333 e #0066CC direto nos componentes, e quando tentamos criar o modo escuro ficou tudo ilegível ou com preto #000000 dando rastro na tela OLED. Quero reestruturar isso numa arquitetura de design tokens em três camadas (referência, sistema e componente) com papéis semânticos de superfície, texto e borda para claro e escuro.",
+    "should_trigger": true
+  },
+  {
+    "query": "Estou aplicando o novo visual translúcido do iOS 26 em uma barra de controles flutuante sobre fotos de viagens no SwiftUI (Views/PhotoOverlayControls.swift). Quando a foto de fundo é muito clara (neve ou praia), os ícones e rótulos dentro do .glassEffect(.clear) somem completamente; quando devo usar a variante regular versus clear, como funciona a camada de escurecimento recomendada e como agrupo os botões com GlassEffectContainer?",
+    "should_trigger": true
+  },
+  {
+    "query": "No nosso app em Jetpack Compose e Flutter, habilitamos cores dinâmicas a partir do papel de parede do usuário no Android 12+, mas o verde de 'sucesso' (#00C853) e o amarelo de 'aviso' da nossa marca brigam feio quando o tema dinâmico puxa para roxo ou coral. Como uso o espaço HCT para harmonizar essas cores semânticas customizadas em direção ao primary sem perder o significado delas e garantindo contraste?",
+    "should_trigger": true
+  },
+  {
+    "query": "Estou montando a tela de configurações do nosso app Android (SettingsScreen.kt) e não sei qual papel de cor usar para diferenciar o fundo da tela, os cards agrupados, um modal aberto por cima e as linhas divisórias entre itens, sem usar sombra pesada. Qual a diferença prática entre surface-container-lowest até surface-container-highest e quando uso outline versus outline-variant?",
+    "should_trigger": true
+  },
+  {
+    "query": "Preciso fechar o arquivo JSON de tokens de tipografia e formas (tokens/typography-and-shape.json) do nosso design system mobile. Quais são os 15 estilos da escala tipográfica do Material 3 (tamanhos e alturas de linha em sp), como funcionam as variantes Emphasized para dar hierarquia sem quebrar o layout, e quais são os 10 níveis oficiais da escala de raios de canto?",
+    "should_trigger": true
+  },
+  {
+    "query": "Na revisão de código do nosso app iOS (ProfileHeaderView.swift), vi vários Color(hex: \"#8E8E93\") e Color.white.opacity(0.6) para subtítulos e textos desabilitados sobre fundos translúcidos. Quais são as cores semânticas nativas de quatro níveis da Apple e os materiais de vibrancy que devemos usar para que o texto se adapte sozinho ao modo escuro, alto contraste e fundos borrados?",
+    "should_trigger": true
+  },
+  {
+    "query": "cara, no modo claro do nosso app em Flutter os cards ficam bem separados do fundo branco por causa do boxShadow, mas no dark mode a sombra preta desaparece no fundo escuro e vira tudo uma massa só em lib/widgets/transaction_card.dart. Como faço elevação tonal usando tokens de superfície pra hierarquia funcionar no escuro sem depender de sombra?",
+    "should_trigger": true
+  },
+  {
+    "query": "Nosso time de design organizou as variáveis no Figma e quer exportar os tokens para o repositório Android (Kotlin), iOS (Swift) e React Native (TypeScript) sem que nenhum desenvolvedor coloque cor ou fonte hardcoded na UI. Como estruturo os nomes semânticos (md.ref.*, md.sys.*, md.comp.*), os pares X / on-X e as variantes para claro, escuro e alto contraste?",
+    "should_trigger": true
+  },
+  {
+    "query": "Preciso escrever um script em Python (scripts/color_diff.py) que converta amostras de tinta medidas em espectrofotômetro do espaço CIE XYZ para CIELAB e calcule a distância perceptual CIEDE2000 entre dois lotes de embalagem impressa em offset CMYK. Qual a fórmula dos fatores de ponderação SL, SC e SH?",
+    "should_trigger": false
+  },
+  {
+    "query": "Estou criando do zero a identidade visual e o logotipo de uma cafeteria artesanal vegana e quero explorar paletas terrosas inspiradas em pintura a óleo renascentista (harmonia tríade e análoga no círculo cromático de Itten). Quais combinações de pigmentos transmitem aconchego para a fachada da loja e para os pacotes de café?",
+    "should_trigger": false
+  },
+  {
+    "query": "No nosso serviço de autenticação em Go (internal/auth/token_service.go), precisamos rotacionar os refresh tokens OAuth2 e invalidar toda a família de tokens caso um token já utilizado seja enviado novamente. Como modelo a tabela refresh_tokens no PostgreSQL e assino o JWT com chave assimétrica Ed25519?",
+    "should_trigger": false
+  },
+  {
+    "query": "Estou integrando a API da Anthropic no nosso backend Python (app/services/llm_client.py) e preciso calcular quantos tokens o histórico de conversa e os anexos PDF vão consumir antes de enviar o prompt, para não estourar o limite de contexto nem o orçamento por requisição.",
+    "should_trigger": false
+  },
+  {
+    "query": "Quero configurar o arquivo app/globals.css do nosso blog corporativo em Next.js com Tailwind CSS v4 (@theme) para definir fontes Google Fonts (Inter e Playfair Display), gradientes de hero para desktop e variáveis CSS --blog-prose-width. Como configuro o plugin @tailwindcss/typography para formatar artigos Markdown?",
+    "should_trigger": false
+  },
+  {
+    "query": "Estou gerando mapas de calor de expressão gênica no Matplotlib e R (plots/heatmap.py) para um artigo científico e o revisor pediu para substituir o mapa jet por uma escala divergente perceptualmente uniforme que continue legível quando impressa em preto e branco. Devo usar coolwarm, viridis ou cividis?",
+    "should_trigger": false
+  },
+  {
+    "query": "Preciso decidir quantos itens cabem na barra de navegação inferior do nosso app no iPhone e em qual largura em dp ou pt devo trocar essa barra por uma Navigation Rail ou Sidebar quando o usuário abre o app num tablet em paisagem.",
+    "should_trigger": false
+  },
+  {
+    "query": "Estou programando um shader fragment GLSL customizado em Three.js (src/shaders/glassRefraction.frag) para renderizar uma esfera de cristal 3D no navegador com aberração cromática, índice de refração de Snell (1.52) e reflexo Fresnel aproximado por Schlick. Como faço o sample do WebGLRenderTarget de fundo com mipmaps?",
+    "should_trigger": false
+  }
+]

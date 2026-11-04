@@ -1,0 +1,66 @@
+[
+  {
+    "query": "No meu app Expo 52 (src/screens/ChatRoomScreen.tsx), quando o usuário toca no campo de mensagem lá embaixo no Android 15 com edge-to-edge ativo, o teclado virtual sobe e tampa metade do input e o botão de enviar. Já tentei mexer no KeyboardAvoidingView, mas no iOS com barra de abas fica um buraco branco enorme em cima do teclado; como resolvo isso direito?",
+    "should_trigger": true
+  },
+  {
+    "query": "Nosso app Android em Jetpack Compose (ui/MainScaffold.kt) hoje só tem uma NavigationBar fixa com 4 abas embaixo e fica horrível esticado no Galaxy Tab S9 e no Pixel Fold aberto. Quero usar Window Size Classes para trocar entre barra inferior no celular, NavigationRail em telas médias e painel mestre-detalhe (ListDetailPaneScaffold) em telas largas, respeitando as larguras e espaçamentos recomendados.",
+    "should_trigger": true
+  },
+  {
+    "query": "Estou atualizando a navegação principal do nosso app SwiftUI (Views/RootTabView.swift) para o iOS 26 e iPadOS 26. Quero que a barra de abas recolha automaticamente quando o usuário rolar o feed para baixo, tenha a aba de busca destacada separada na ponta direita e vire uma sidebar retrátil quando rodar no iPad em paisagem.",
+    "should_trigger": true
+  },
+  {
+    "query": "a galera ta reclamando que no iPhone Pro Max é impossivel alcançar o botão 'Confirmar transferência' porque ele ta la no topo direito da NavigationBar em TransferReviewView.swift, e pra piorar o botão 'Cancelar e excluir rascunho' ta colado no dedão embaixo com cor destacada. Como reorganizo a anatomia dessa tela pra uso com uma mão só?",
+    "should_trigger": true
+  },
+  {
+    "query": "Preciso padronizar as medidas dos componentes base do nosso design system mobile em Flutter (lib/ui/components/): alturas exatas dos 5 tamanhos de botão (do XS ao XL), raio de canto e espessura de borda dos campos de texto Filled e Outlined, tamanho do FAB e cálculo do raio interno de uma imagem com padding de 16dp dentro de um card arredondado.",
+    "should_trigger": true
+  },
+  {
+    "query": "Temos um carrossel de fotos de ponta a ponta em Jetpack Compose (ProductGallery.kt) e, quando o usuário tenta arrastar da borda direita para a esquerda para ver a próxima foto no Android 15, o sistema dispara o gesto de voltar preditivo e fecha a tela. Como protejo a faixa do carrossel do gesto de sistema sem quebrar o Predictive Back no resto da Activity?",
+    "should_trigger": true
+  },
+  {
+    "query": "Na tela de filtros (FilterBottomSheet.tsx), o nosso modal está abrindo colado no topo até o notch no iPhone 16 Pro e em tablets fica com linhas de texto de 1200px de largura impossíveis de ler. Quais as especificações de raio superior, paradas de meia altura (.medium/.large), largura máxima de formulário e margens para telas grandes?",
+    "should_trigger": true
+  },
+  {
+    "query": "Ativei enableEdgeToEdge() no MainActivity.kt do nosso app Android e agora a LazyColumn da tela de pedidos corta o último card atrás da barra de gestos inferior, enquanto o TopAppBar ficou com padding duplicado no topo. Qual a combinação correta de WindowInsets, safeDrawing, consumeWindowInsets e imeNestedScroll no Scaffold?",
+    "should_trigger": true
+  },
+  {
+    "query": "Na nossa aplicação web em React + Tailwind CSS (src/components/Navbar.tsx), o menu horizontal com 7 links quebra em duas linhas quando a janela do navegador no notebook fica em 1024px. Quero transformar esse cabeçalho em um drawer lateral com CSS Grid, position: sticky e breakpoints md: e lg: do Tailwind.",
+    "should_trigger": false
+  },
+  {
+    "query": "Como configuro o linking no React Navigation v7 (src/navigation/linking.ts) para que links universais do tipo https://app.meubanco.com.br/pix/comprovante/123 abram direto a rota autenticada, redirecionando antes para a tela de login se o token no Zustand estiver expirado?",
+    "should_trigger": false
+  },
+  {
+    "query": "No nosso e-commerce web em Next.js (components/HeaderMegaMenu.tsx), o dropdown de categorias com z-index: 50 está ficando por trás do banner promocional da home porque alguém colocou transform: translateZ(0) e opacity: 0.99 na seção abaixo. Como resolvo esse problema de stacking context no CSS?",
+    "should_trigger": false
+  },
+  {
+    "query": "Estou desenhando um painel de observabilidade web para monitores widescreen (1920x1080) em Vue 3 (src/layouts/DashboardLayout.vue). Preciso definir a largura da sidebar fixa à esquerda, barra de filtros no topo e um grid de 12 colunas para exibir gráficos de latência e tabelas de logs com scroll virtual.",
+    "should_trigger": false
+  },
+  {
+    "query": "Quero substituir todas as cores hexadecimais espalhadas pelos botões, cards e barras do nosso app Android por papéis semânticos do Material 3 (surface-container-low, primary-container, outline-variant) e ajustar o contraste da paleta no modo escuro. Quais tons HCT devo usar para cada nível de superfície?",
+    "should_trigger": false
+  },
+  {
+    "query": "O layout do nosso bottom sheet no app iOS já está pronto e com os tamanhos certos, mas a animação de abertura está usando uma curva linear sem graça e não dá nenhuma resposta tátil quando encaixa no topo. Quais parâmetros de mola (stiffness e dampingRatio) e qual gerador de haptics devo usar no momento do snap?",
+    "should_trigger": false
+  },
+  {
+    "query": "Nosso app Android roda num coletor de dados Zebra com leitor de código de barras físico via Bluetooth HID (BarcodeScannerActivity.kt). Como intercepto os eventos onKeyDown e KeyEvent.KEYCODE_ENTER enviados pelo scanner sem abrir o teclado virtual na tela?",
+    "should_trigger": false
+  },
+  {
+    "query": "Criei um modal de confirmação usando a tag HTML <dialog> nativa no nosso portal web (public/js/modal.js), mas quando ele abre na tela do navegador a página de fundo continua rolando com a roda do mouse. Como bloqueio o scroll do <body> com overflow: hidden compensando a largura da barra de rolagem?",
+    "should_trigger": false
+  }
+]

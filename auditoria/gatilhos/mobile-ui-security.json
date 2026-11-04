@@ -1,0 +1,66 @@
+[
+  {
+    "query": "Na auditoria de segurança do nosso app bancário, o pentester apontou que nosso login por biometria apenas chama authenticate() e, se o callback retorna sucesso, libera a tela — o que ele burlou facilmente com Frida num aparelho com root. Como refatoro esse fluxo no Android (Kotlin) e no iOS (Swift) para atrelar a biometria a uma chave no Android Keystore / Secure Enclave usando CryptoObject, assinar um desafio do servidor e tratar o caso em que o usuário cadastra uma digital nova?",
+    "should_trigger": true
+  },
+  {
+    "query": "No nosso app Android (BiometricAuthManager.kt), quando chamo PromptInfo.Builder().setAllowedAuthenticators(BIOMETRIC_STRONG or DEVICE_CREDENTIAL).setNegativeButtonText(\"Entrar com senha da conta\"), o app fecha na hora com IllegalArgumentException. Além disso, quando o usuário erra a digital 5 vezes seguidas e entra em lockout, nossa tela fica tentando abrir o prompt em loop; qual o desenho correto de fallback e tratamento de erros?",
+    "should_trigger": true
+  },
+  {
+    "query": "Na tela que exibe o número completo e o CVV do cartão virtual (VirtualCardScreen.tsx em React Native/Expo e nos módulos nativos), precisamos bloquear captura e gravação de tela e esconder os dados na miniatura de apps recentes quando o usuário minimiza o app. Como implemento isso no iOS (máscara no background), no Android (FLAG_SECURE e setRecentsScreenshotEnabled(false) para o teste OWASP MASTG-TEST-0292) e por que o Alert.alert nativo no Android exige cuidado?",
+    "should_trigger": true
+  },
+  {
+    "query": "A revisão da App Store e do Google Play questionou por que nosso app de divisão de despesas pede READ_MEDIA_IMAGES e acesso completo a todos os contatos só para o usuário anexar um comprovante e escolher um amigo. Como substituo essas permissões amplas pelos seletores nativos sem permissão (Photo Picker, PHPickerViewController, seletor de contato) e como a UI deve lidar com acesso limitado e localização aproximada?",
+    "should_trigger": true
+  },
+  {
+    "query": "to usando LocalAuthentication.authenticateAsync() no meu app Expo (src/auth/biometrics.ts) e salvando o refresh token no AsyncStorage, achando que tava seguro, mas me falaram que qualquer um extrai isso do backup. Como uso o expo-secure-store com requireAuthentication: true e WHEN_UNLOCKED_THIS_DEVICE_ONLY, quais as versões mínimas de Android/iOS e o que acontece na UI se o usuário trocar o Face ID no aparelho?",
+    "should_trigger": true
+  },
+  {
+    "query": "Vários usuários abriram chamado dizendo que depois que cadastraram um novo dedo no Android ou resetaram o Face ID no iPhone, o nosso app fecha sozinho ou mostra 'Erro inesperado 500' ao tentar confirmar uma transferência com biometria. Qual exceção o Keystore e o Keychain lançam nesse cenário e qual fluxo de interface devemos apresentar para recuperar a conta e gerar uma nova chave?",
+    "should_trigger": true
+  },
+  {
+    "query": "Hoje o nosso app de corrida dispara 4 popups do sistema seguidos (localização precisa, notificações, câmera e microfone) no primeiro segundo em que o usuário abre o app pela primeira vez, e 70% das pessoas negam tudo. Como redesenho o pedido de permissões em contexto (just-in-time), tratando a permissão 'Apenas esta vez' do Android 11+, o auto-reset de apps sem uso e a degradação graciosa quando o usuário recusa?",
+    "should_trigger": true
+  },
+  {
+    "query": "Estamos preparando a submissão do nosso app iOS e Android para as lojas e precisamos revisar a camada de interface e privacidade: o prompt do App Tracking Transparency (ATT), a proibição de bloquear colar no campo de senha, a limpeza de dados sensíveis em logs de crash e a coerência entre o Privacy Manifest de cada SDK, o App Store Privacy Details e o formulário Data Safety do Google Play.",
+    "should_trigger": true
+  },
+  {
+    "query": "Estou implementando o módulo de autenticação da nossa API REST em NestJS (src/auth/auth.service.ts) com PostgreSQL. Como faço o hash de senhas com Argon2id, gero pares de access token JWT de 15 minutos e refresh token em cookie HttpOnly SameSite=Strict, e protejo as rotas com um AuthGuard?",
+    "should_trigger": false
+  },
+  {
+    "query": "Na auditoria de segurança do nosso portal web em Next.js (middleware.ts), precisamos configurar cabeçalhos HTTP Content-Security-Policy com nonce para scripts inline, X-Frame-Options: DENY contra clickjacking e regras estritas de CORS no Nginx. Quais diretivas CSP evitam XSS sem quebrar o carregamento de fontes?",
+    "should_trigger": false
+  },
+  {
+    "query": "Precisamos configurar SSL/TLS Certificate Pinning com hashes SHA-256 dos certificados públicos (SubjectPublicKeyInfo) no cliente HTTP OkHttpClient no Android (NetworkModule.kt) e no URLSessionDelegate no iOS para impedir interceptação de tráfego por proxies corporativos.",
+    "should_trigger": false
+  },
+  {
+    "query": "Quando geramos o bundle AAB de release do nosso app Android com isMinifyEnabled = true no build.gradle.kts, o R8 está renomeando as classes de modelo do Retrofit/Kotlinx Serialization e quebrando o parse do JSON. Quais regras -keep devo colocar no proguard-rules.pro?",
+    "should_trigger": false
+  },
+  {
+    "query": "Quero adicionar login sem senha via WebAuthn (navigator.credentials.create e navigator.credentials.get) no nosso painel web para navegadores Chrome e Safari no desktop (src/web/passkeys.ts). Como converto o challenge e o attestationObject em ArrayBuffer para enviar ao servidor FIDO2?",
+    "should_trigger": false
+  },
+  {
+    "query": "Estou escrevendo um contrato inteligente ERC-20 em Solidity (contracts/StakingVault.sol) que aceita assinaturas EIP-712 (ecrecover) para permitir permit sem gasto de gas pelo usuário. Como evito ataques de replay com nonces e protejo a função withdraw contra reentrância usando OpenZeppelin?",
+    "should_trigger": false
+  },
+  {
+    "query": "Preciso revisar a tela de extrato do nosso app mobile para garantir que os valores monetários não cortem quando o usuário ativa a fonte AX5 no iOS ou 200% no Android 14+, e que o VoiceOver leia o saldo completo corretamente.",
+    "should_trigger": false
+  },
+  {
+    "query": "Nosso app mobile faz upload de fotos de perfil para um bucket Amazon S3 usando URLs pré-assinadas geradas pelo backend (infra/iam-policy.tf). Quais permissões mínimas (s3:PutObject, s3:GetObject) devo colocar na política IAM da role da função AWS Lambda e como bloqueio acesso público no bucket?",
+    "should_trigger": false
+  }
+]

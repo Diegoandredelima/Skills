@@ -7,3 +7,6 @@
 Thumbs.db
 desktop.ini
 __pycache__/
+
+# Prompts de trabalho (ficam só na máquina)
+prompts/
