@@ -19,6 +19,8 @@ Superfícies por tom: claro usa tons ~100 a 90; escuro ~4 a 22.
 
 ## Elevação tonal
 
+Na especificação atual do M3, a hierarquia de superfície usa prioritariamente os **5 papéis `surface-container`** (`lowest` a `highest`). A tabela abaixo documenta a escala de `surfaceTint` (sobreposição percentual de `primary`, ainda usada por `Surface(tonalElevation)` no Compose e `ElevationOverlay.applySurfaceTint` no Flutter):
+
 | Nível | dp | Sobreposição de primary | Exemplos |
 | --- | --- | --- | --- |
 | 0 | 0 | 0% | Superfície base |
@@ -28,18 +30,19 @@ Superfícies por tom: claro usa tons ~100 a 90; escuro ~4 a 22.
 | 4 | 8 | +12% | Hover/pressed de nível 3 |
 | 5 | 12 | +14% | — |
 
-## Escala de raios
+## Escala de raios (10 níveis M3 Expressive)
 
 | Token | Valor |
 | --- | --- |
 | none | 0dp |
-| extraSmall | 4dp |
-| small | 8dp (campos de texto) |
+| extraSmall | 4dp (campos de texto M3) |
+| small | 8dp |
 | medium | 12dp (cards) |
 | large | 16dp (FAB) |
+| largeIncreased (`large-increased`) | 20dp |
 | extraLarge | 28dp (sheets, diálogos) |
-| extraLargeIncreased | 32dp |
-| extraExtraLarge | 48dp |
+| extraLargeIncreased (`extra-large-increased`) | 32dp |
+| extraExtraLarge (`extra-extra-large`) | 48dp |
 | full | 9999 / pílula (botões) |
 
 ## Tipografia M3 (base)

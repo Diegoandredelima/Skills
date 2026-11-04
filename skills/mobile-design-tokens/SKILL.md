@@ -40,7 +40,7 @@ Componente consome **component** ou **system**, nunca **reference** nem valor li
 - **Profundidade por tom, não por sombra:** 5 surface-containers (lowest → highest). Sombra só para FAB,
   diálogo ou elemento sobre fundo ruidoso. Superfície padrão do tema claro = tom **98**; chroma neutro **6**.
 - **Cor de marca/semântica com dynamic color** (Android 12+, `dynamicLightColorScheme`/`dynamicDarkColorScheme`):
-  harmonize em HCT com o primary do esquema (desloca o matiz um pouco, preserva a identidade) em vez de
+  harmonize em HCT com o `primary` do esquema (`MaterialColors.harmonize` / `MaterialColors.harmonizeWithPrimary` em `com.google.android.material.color.MaterialColors` no Android; `Blend.harmonize` em `material_color_utilities` no Flutter/Dart e Web — desloca o matiz um pouco, preserva a identidade) em vez de
   usar o valor cru.
 - **Estado nunca só por cor:** erro = cor `error` + ícone + texto.
 
@@ -55,9 +55,8 @@ Componente consome **component** ou **system**, nunca **reference** nem valor li
   - **clear**: muito translúcido, só para controles sobre foto/vídeo. Sobre mídia clara (fora dos controles
     padrão do AVKit) adicione camada escura de **35%**.
 - Vidro só na camada de controle/navegação. Nunca em listas, cards, células ou fundo; nunca vidro sobre vidro;
-  agrupe com `GlassEffectContainer`. Orçamento: ≤ 4 camadas de composição por tela; blur ≤ 40px (iPhone) /
-  60px (iPad).
-- Teste com: Liquid Glass Clear/Tinted (iOS 26.1), controle de transparência, **Reduce Transparency** (vira
+  agrupe elementos próximos com `GlassEffectContainer` e valide o custo de GPU no Xcode Instruments.
+- Teste com os modos de aparência do sistema (`Light`, `Dark`, `Clear`, `Tinted`), **Reduce Transparency** (vira
   fundo sólido) e **Increase Contrast**.
 
 ## Tipografia
@@ -71,8 +70,8 @@ Componente consome **component** ou **system**, nunca **reference** nem valor li
 
 ## Formas
 
-- Escala M3: none 0 · extraSmall 4 · small 8 · medium 12 · large 16 · extraLarge 28 · (extra-large-increased 32,
-  extra-extra-large 48) · full (pílula). Bordas 0/1/2/4dp.
+- Escala M3 (10 níveis): none 0 · extraSmall 4 · small 8 · medium 12 · large 16 · (large-increased 20) · extraLarge 28 · (extra-large-increased 32,
+  extra-extra-large 48) · full (pílula). Contornos M3: 1dp (repouso) e 2dp (foco) — ou convenção 0/1/2/4dp no projeto.
 - iOS 26: `ConcentricRectangle` (acompanha o raio do hardware), `Capsule`.
 - Aninhado: `raio interno = raio externo − padding`.
 
