@@ -4,17 +4,17 @@
 
 | Estilo | Large (padrão) | AX2 | AX5 |
 | --- | --- | --- | --- |
-| Large Title | 34 (41) | 47 (56) | 60 (70) |
+| Large Title | 34 (41) | 48 (57) | 60 (70) |
 | Title 1 | 28 (34) | 43 (51) | 58 (68) |
-| Title 2 | 22 (28) | 38 (46) | 56 (66) |
+| Title 2 | 22 (28) | 39 (47) | 56 (66) |
 | Title 3 | 20 (25) | 37 (44) | 55 (65) |
 | Headline | 17 (22) semibold | 33 (40) | 53 (62) |
 | Body | 17 (22) | 33 (40) | 53 (62) |
 | Callout | 16 (21) | 32 (39) | 51 (60) |
 | Subheadline | 15 (20) | 30 (37) | 49 (58) |
-| Footnote | 13 (18) | 27 (33) | 47 (56) |
-| Caption 1 | 12 (16) | 26 (32) | 46 (56) |
-| Caption 2 | 11 (13) (mínimo) | 24 (30) | 44 (52) |
+| Footnote | 13 (18) | 27 (33) | 44 (52) |
+| Caption 1 | 12 (16) | 26 (32) | 43 (51) |
+| Caption 2 | 11 (13) (mínimo) | 24 (30) | 40 (48) |
 
 Escala: xSmall, Small, Medium, **Large (padrão)**, xLarge, xxLarge, xxxLarge (+33–36%), AX1…AX5.
 
@@ -48,7 +48,7 @@ Escala: xSmall, Small, Medium, **Large (padrão)**, xLarge, xxLarge, xxxLarge (+
 
 ### Flutter
 - `Semantics(label:, button: true, selected:, header:)`, `MergeSemantics`, `ExcludeSemantics`.
-- `MediaQuery.textScalerOf(context)`; `SemanticsService.sendAnnouncement(View.of(context), "Salvo", TextDirection.ltr)` (`SemanticsService.announce` está depreciado).
+- `MediaQuery.textScalerOf(context)`; `SemanticsService.announce("Salvo", TextDirection.ltr)` e `SemanticsService.sendAnnouncement(View.of(context), "Salvo", TextDirection.ltr)` (variante por `FlutterView`, para multi-view).
 
 ### React Native / Expo
 - `accessibilityLabel`, `accessibilityHint`, `accessibilityRole` ("button", "header", "switch"…),
