@@ -16,12 +16,13 @@ val spec = KeyGenParameterSpec.Builder("chave_login", KeyProperties.PURPOSE_SIGN
     .setAlgorithmParameterSpec(ECGenParameterSpec("secp256r1"))
     .setDigests(KeyProperties.DIGEST_SHA256)
     .setUserAuthenticationRequired(true)
-    .setUserAuthenticationParameters(0, KeyProperties.AUTH_BIOMETRIC_STRONG) // auth por uso
-    .setInvalidatedByBiometricEnrollment(true)
+    .setUserAuthenticationParameters(0, KeyProperties.AUTH_BIOMETRIC_STRONG) // auth por uso (API 30+)
+    .setInvalidatedByBiometricEnrollment(true) // API 24+
     .build()
 KeyPairGenerator.getInstance(KeyProperties.KEY_ALGORITHM_EC, "AndroidKeyStore")
     .apply { initialize(spec) }.generateKeyPair()
 
+val keyStore = KeyStore.getInstance("AndroidKeyStore").apply { load(null) }
 val signature = Signature.getInstance("SHA256withECDSA").apply {
     initSign(keyStore.getKey("chave_login", null) as PrivateKey) // pode lançar KeyPermanentlyInvalidatedException
 }
@@ -31,7 +32,7 @@ val promptInfo = BiometricPrompt.PromptInfo.Builder()
     .setNegativeButtonText("Usar senha")
     .build()
 biometricPrompt.authenticate(promptInfo, BiometricPrompt.CryptoObject(signature))
-// onAuthenticationSucceeded: result.cryptoObject.signature.update(nonceDoServidor); sign(); enviar ao servidor
+// onAuthenticationSucceeded: result.cryptoObject?.signature?.apply { update(nonceDoServidor); val assinatura = sign() }
 ```
 
 Para cifrar token: `PURPOSE_ENCRYPT | PURPOSE_DECRYPT`, AES em CBC/PKCS7 ou GCM, `Cipher` no `CryptoObject`.
@@ -64,8 +65,8 @@ Verificar disponibilidade: `LAContext().canEvaluatePolicy(.deviceOwnerAuthentica
 ```ts
 import * as SecureStore from 'expo-secure-store';
 await SecureStore.setItemAsync('token', valor, {
-  requireAuthentication: true,           // leitura exige biometria (Keychain/Keystore)
-  keychainAccessible: SecureStore.WHEN_UNLOCKED_THIS_DEVICE_ONLY,
+  requireAuthentication: true,           // leitura exige biometria (Android 6.0+ / API 23+; build nativo com NSFaceIDUsageDescription no iOS)
+  keychainAccessible: SecureStore.WHEN_UNLOCKED_THIS_DEVICE_ONLY, // iOS (kSecAttrAccessible)
 });
 // Ler pode falhar se a biometria mudou: tratar como "pedir senha e regravar".
 ```

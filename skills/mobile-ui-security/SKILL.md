@@ -23,9 +23,9 @@ isso explicitamente; não chame de "autenticação forte".
 **Android:** `BIOMETRIC_STRONG` (classe 3: digital, rosto 3D certificado) é o único que destrava chave do
 Keystore; `BIOMETRIC_WEAK` (classe 2, rosto 2D) é conveniência e **não** destrava `CryptoObject`;
 `DEVICE_CREDENTIAL` = PIN/padrão/senha. Chave com `setUserAuthenticationRequired(true)`,
-`setUserAuthenticationParameters(0, AUTH_BIOMETRIC_STRONG)` (auth por uso em operação de alto valor; ou
-timeout curto, ex. 60s) e `setInvalidatedByBiometricEnrollment(true)`; passe o `Cipher`/`Signature` em
-`BiometricPrompt.CryptoObject`.
+`setUserAuthenticationParameters(0, KeyProperties.AUTH_BIOMETRIC_STRONG)` (API 30+; auth por uso em operação de
+alto valor, ou timeout curto, ex. 60s) e `setInvalidatedByBiometricEnrollment(true)` (API 24+); passe o
+`Cipher`/`Signature` em `BiometricPrompt.CryptoObject`.
 
 **iOS:** `NSFaceIDUsageDescription` no Info.plist; par EC P-256 no Secure Enclave com
 `kSecAccessControlBiometryCurrentSet` (invalida ao cadastrar nova biometria) ou `BiometryAny`, e
@@ -34,7 +34,8 @@ timeout curto, ex. 60s) e `setInvalidatedByBiometricEnrollment(true)`; passe o `
 código do aparelho).
 
 **React Native/Expo:** `expo-local-authentication` sozinho é gate de UI. Para proteger um segredo, guarde-o
-com `expo-secure-store` e `requireAuthentication: true` (Keychain/Keystore exigem biometria para ler) ou use
+com `expo-secure-store` e `requireAuthentication: true` (Keychain/Keystore exigem biometria para ler; requer
+Android 6.0+ / API 23+ e build nativo com `NSFaceIDUsageDescription` no iOS, sem suporte no Expo Go) ou use
 biblioteca nativa que assine com chave em hardware.
 
 ### Fluxos que a UI precisa tratar
@@ -64,8 +65,9 @@ biblioteca nativa que assine com chave em hardware.
 - Campo de senha: nunca bloqueie colar nem gerenciador de senhas (WCAG 3.3.8).
 
 **React Native/Expo:** `expo-screen-capture` (`preventScreenCaptureAsync`/`usePreventScreenCapture`) ou ponte
-nativa própria. Confirmações de dados sensíveis devem ficar dentro da janela protegida — no Android, um
-`Alert` nativo abre janela separada que pode não herdar o flag.
+nativa própria. Confirmações de dados sensíveis devem ficar dentro da árvore React protegida — no Android,
+janelas nativas separadas (`Alert.alert`, `Dialog` e `<Modal>` antes do React Native 0.78) criam um `Window`
+próprio (`dialog.getWindow()`) que pode não herdar `FLAG_SECURE` da `Activity`.
 
 ## 3. Permissões just-in-time e granulares
 
