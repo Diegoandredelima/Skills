@@ -8,8 +8,8 @@ HIG = iOS/iPadOS 26.
 **M3**
 - 5 estilos: Elevated (nível 1 = 1dp; 0dp desabilitado), Filled (fundo `primary`), Tonal (`secondary-container`),
   Outlined (borda `outline` 1dp), Text (sem contêiner, sem modo toggle).
-- 5 tamanhos: XS 32dp, S 40dp, adaptativo 48dp (toque) / 32dp (mouse), M 56dp, L/XL maiores.
-- Forma: pílula (raio full). Área de toque **≥ 48×48dp** mesmo nos tamanhos visuais 32 e 40.
+- 5 tamanhos (M3 Expressive): XS **32dp**, S **40dp** (padrão), M **56dp**, L **96dp**, XL **136dp** (para mouse/desktop, alvo mínimo 32dp).
+- Forma: pílula (raio full; ou quadrado com morphing ao pressionar no M3 Expressive). Área de toque **≥ 48×48dp** mesmo nos tamanhos visuais 32 e 40.
 
 **HIG**
 - Estilos: padrão, proeminente (1–2 por tela, cor de destaque) e Liquid Glass (`.buttonStyle(.glass)`,
@@ -20,7 +20,7 @@ HIG = iOS/iPadOS 26.
 
 ## Campos de texto
 
-- **M3:** variantes Filled e Outlined; raio small **8dp**; borda 1dp (thin), 2dp (thick), 4dp (extraThick);
+- **M3:** variantes Filled e Outlined; raio extra-small **4dp** (no topo do Filled e nos 4 cantos do Outlined); borda **1dp** em repouso (`outline`) e **2dp** focado (`primary`);
   transição de estado **250ms**.
 - **HIG:** alvo ≥ 44pt. iOS 26 aumentou altura de linha e padding em listas/formulários; cabeçalhos de seção em
   Title Case, sem caixa-alta automática.
@@ -31,7 +31,7 @@ HIG = iOS/iPadOS 26.
 - **M3:** raio medium **12dp**; Elevated = nível 1 (1dp, +5% primary); padding **16dp**; barra de ações com
   padding 8/16/16 e gap **8dp**, alinhada ao fim; mídia **16:9** com `cover`.
 - **HIG:** camada de conteúdo — nunca Liquid Glass (evita vidro sobre vidro). Preenchimento sólido ou material
-  padrão; em painéis translúcidos, frost 20–25 e depth ≤ 15.
+  padrão do sistema.
 
 ## Bottom sheets e modais
 
@@ -49,17 +49,17 @@ HIG = iOS/iPadOS 26.
 
 ## Barras
 
-- **M3:** App Bar large **152dp**; app bar rolada e Navigation Bar no nível 2 (3dp, +8%). Extended Rail **256dp**.
-- **HIG:** barra de navegação 44pt compacta ou 96pt no iPhone (93pt no iPad), sem busca; status bar 54pt
-  (iPhone) ou 24pt + 24pt grabber (iPad). Tab Bar 83pt iPhone (máx. 5) / 65pt iPad (máx. 8). Sidebar 320pt
-  (iPad) / 200pt (Mac); botão de alternância 31×22pt.
+- **M3:** App Bar large **152dp** (small 64dp, medium 112dp); app bar rolada e Navigation Bar no nível 2 (3dp, +8%). Extended Rail **220–360dp** (usual **256dp**).
+- **HIG:** barra de navegação 44pt compacta ou 96pt com título grande no iPhone, sem busca; a altura da status bar e da safe area inferior varia por aparelho (use `safeAreaInsets` em vez de valores fixos). Tab Bar no iPhone: máx. 5 abas, barra de 49pt (~83pt com a safe area inferior em aparelhos com Face ID); no iPadOS 18+, pílula flutuante adaptativa que se converte em Sidebar (~320pt no iPad / ~200pt no Mac).
 
 ## Listas e ícones
 
 - Item de duas linhas: **72dp**. Ícones: 20, 24, 32, 40, 48dp.
 - Anel de foco M3: **3dp** de espessura com **3dp** de offset.
 
-## Elevação tonal M3 (sobreposição de `primary` na superfície)
+## Elevação tonal M3
+
+Na revisão atual do M3, prefira os **5 papéis fixos de superfície** (`surface-container-lowest`, `-low`, `surface-container`, `-high`, `-highest`). A tabela abaixo documenta a correspondência de `surfaceTint` (sobreposição de `primary` ainda usada por `Surface(tonalElevation)` no Compose e `ElevationOverlay.applySurfaceTint` no Flutter):
 
 | Nível | dp | Sobreposição |
 | --- | --- | --- |

@@ -15,13 +15,13 @@ de voltar desenhado onde o gesto do sistema já resolve).
 
 | Contexto | Android (M3) | iOS / iPadOS (HIG 26) |
 | --- | --- | --- |
-| Telefone, 3–5 destinos de mesmo peso | **Navigation Bar** (sem sombra, indicador em pílula `secondary-container`, ícone contorno→preenchido). No M3 Expressive prefira a **Flexible Navigation Bar** (mais baixa; ícone e rótulo lado a lado em Medium). | **Tab Bar** — só para seções de topo, nunca para ações (ações vão na Toolbar). Máx. **5** abas, SF Symbols preenchidos, rótulo de uma palavra; 83pt de altura (21pt de home indicator). |
-| Tablet / janela larga | Medium (600–839) e Expanded (840–1199): **Navigation Rail** na borda inicial. Large (1200+) / XL (1600+): rail estendido (**256dp**, com rótulos) ou **PermanentNavigationDrawer**. | **Sidebar** em Liquid Glass (`.tabViewStyle(.sidebarAdaptable)`), recolhida em retrato e expandida (**320pt**) em paisagem; iPad Tab Bar até **8** abas, 65pt. |
-| Voltar | **Predictive Back** (prévia da tela anterior durante o gesto). | **Back swipe** pela borda — nunca bloquear. |
+| Telefone, 3–5 destinos de mesmo peso | **Navigation Bar** (sem sombra, indicador em pílula `secondary-container`, ícone contorno→preenchido). No M3 Expressive prefira a **Flexible Navigation Bar** (mais baixa; ícone e rótulo lado a lado em Medium). | **Tab Bar** — só para seções de topo, nunca para ações (ações vão na Toolbar). Máx. **5** abas no iPhone, SF Symbols preenchidos, rótulo de uma palavra; barra padrão de 49pt (~83pt somando a safe area inferior em iPhones com Face ID). |
+| Tablet / janela larga | Medium (600–839) e Expanded (840–1199): **Navigation Rail** na borda inicial. Large (1200+) / XL (1600+): rail estendido (**220–360dp**, usual **256dp**, com rótulos) ou **PermanentNavigationDrawer**. | **Sidebar** em Liquid Glass (`.tabViewStyle(.sidebarAdaptable)`, iOS 18+), recolhida em retrato e expandida (~**320pt**) em paisagem; no iPadOS 18+ a Tab Bar flutua no topo e converte-se em Sidebar. |
+| Voltar | **Predictive Back** (prévia da tela anterior durante o gesto; opt-in `android:enableOnBackInvokedCallback="true"` no Android 13/14, padrão no Android 15+ / API 35+). | **Back swipe** pela borda — nunca bloquear. |
 
 Regras do HIG para Tab Bar: não esconder nem desabilitar abas dinamicamente (a interface fica
-imprevisível); evitar a aba "More"; badge vermelho só para o que é realmente crítico. No iOS 26:
-`.tabBarMinimizeBehavior(.onScrollDown)` e `Tab(role: .search)` para a busca como aba à parte.
+imprevisível); evitar a aba "More"; badge vermelho só para o que é realmente crítico. No SwiftUI:
+`.tabBarMinimizeBehavior(.onScrollDown)` (iOS 26+) e `Tab(role: .search)` (iOS 18+, destacada como pílula separada em Liquid Glass no iOS 26).
 
 Carrossel/lista horizontal no Android: `Modifier.systemGestureExclusion()` para não brigar com o gesto de
 voltar nas bordas.
@@ -64,13 +64,13 @@ Cinco operações adaptativas do M3:
 - Margens laterais: **16** em Compact (iPhone retrato); **24** em Medium+ e no iPad (20 no macOS).
 - Entre botões de ação adjacentes: **8** (barras de ação de card/formulário) ou **12** — documente a escolha.
 - Item de lista de duas linhas: **72dp**. Ícones: 20 / 24 / 32 / 40 / 48dp.
-- Formulário: `maxWidth` **560dp**, 16dp entre campos.
-- Corpo de leitura em Large/XL: **840–1040dp** de largura máxima (ultrawide 1920); `readableContentGuide` no
+- Formulário (referência de projeto): `maxWidth` **560dp**, 16dp entre campos.
+- Corpo de leitura em Large/XL (referência de projeto): **840–1040dp** de largura máxima (ultrawide 1920); `readableContentGuide` no
   iPadOS. Texto: 40–60 caracteres por linha (30–75 aceitável), altura de linha 1.4–1.5× no corpo, ~1.2× em
   títulos grandes.
 - **Raio concêntrico:** filho arredondado dentro de pai arredondado → `interno = externo − padding`
   (card 48dp com padding 16dp → filho 32dp). No iOS 26, `ConcentricRectangle`.
-- Camadas de z-index (sem inteiros arbitrários): background 0 · content 1 · floating 10 · drawer 100 ·
+- Camadas de z-index (convenção de referência sem inteiros arbitrários): background 0 · content 1 · floating 10 · drawer 100 ·
   modal 1000 · snackbar 2000 · tooltip 9999.
 
 ## 5. SafeArea, recortes e teclado
