@@ -1,7 +1,7 @@
 {
   "name": "skills-diego",
   "description": "Skills do Diego para o Claude Code: conjunto mobile-ui-ux (design e engenharia de interface mobile iOS/Android — layout, tokens, motion, acessibilidade e segurança de UI).",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": {
     "name": "Diego André de Lima"
   },
