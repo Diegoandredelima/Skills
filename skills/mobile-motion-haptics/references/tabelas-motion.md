@@ -33,11 +33,11 @@ Ex.: `Spring(duration: 0.5, bounce: 0.3)` → stiffness ≈ 157.9.
 
 Compose `spring()` padrão (fora dos tokens M3): stiffness 1500, damping crítico → ~240ms, 0% overshoot.
 
-## Conversão para Reanimated (3.0+ / 4.x)
+## Conversão para Reanimated (3.x / 4.x)
 
 No `react-native-reanimated`, `withSpring` opera em dois modos **mutuamente exclusivos** (não combine `dampingRatio` com `stiffness`/`damping`, pois `duration` e `dampingRatio` sobrescrevem os parâmetros físicos):
-- **Modo físico (fiel aos tokens M3 `k` e `ζ`):** `withSpring(target, { mass: 1, stiffness: k, damping: 2 * ζ * Math.sqrt(k * 1) })`. Ex.: `default-spatial` expressive (`ζ = 0.8`, `k = 380`) → `damping = 2 × 0.8 × √380 ≈ 31.2`.
-- **Modo baseado em duração (Reanimated 3.0+):** `withSpring(target, { duration: 475, dampingRatio: 0.8 })`.
+- **Modo físico (fiel aos tokens M3 `k` e `ζ`):** `withSpring(target, { mass: 1, stiffness: k, damping: 2 * ζ * Math.sqrt(k * 1) })` (passe `mass: 1` explicitamente, pois o `mass` padrão do `withSpring` na doc 4.x é **4**). Ex.: `default-spatial` expressive (`ζ = 0.8`, `k = 380`) → `damping = 2 × 0.8 × √380 ≈ 31.2`.
+- **Modo baseado em duração (Reanimated 3.2+):** `withSpring(target, { duration: 475, dampingRatio: 0.8 })`.
 
 ## Transições M3 (pares legados/fallback)
 

@@ -52,7 +52,7 @@ Valores mais usados (massa 1):
 - **SwiftUI:** `Spring(duration:bounce:)` (iOS 17+) — bounce 0 = crítico; até 1.0 mais elástico (≥ 0.3 = exagerado);
   negativo = sobreamortecido. Presets: `.spring()` (~690ms, 1% overshoot), `.smooth` (iOS 17+, sem overshoot),
   `.snappy` (iOS 17+, 0.6%). Arrasto: `.interactiveSpring(response: 0.15, dampingFraction: 0.86, blendDuration: 0.25)`.
-- **React Native (Reanimated 3.0+ / 4.x):** `withSpring` tem dois modos mutuamente exclusivos — **físico** `withSpring(v, { mass: 1, stiffness: 380, damping: 31.2 })` (onde `damping = 2 × ζ × √(k × mass)`) ou **por duração** (Reanimated 3.0+) `withSpring(v, { duration: 475, dampingRatio: 0.8 })` (não combine `dampingRatio` com `stiffness`/`damping`); `withTiming(v, { duration: 200, easing: Easing.bezier(0.34, 0.8, 0.34, 1) })` para effects.
+- **React Native (Reanimated 3.x / 4.x):** `withSpring` tem dois modos mutuamente exclusivos — **físico** `withSpring(v, { mass: 1, stiffness: 380, damping: 31.2 })` (onde `damping = 2 × ζ × √(k × mass)`; passe `mass: 1` explicitamente porque o `mass` padrão no Reanimated 4.x é **4**) ou **por duração** (Reanimated 3.2+) `withSpring(v, { duration: 475, dampingRatio: 0.8 })` (não combine `dampingRatio` com `stiffness`/`damping`); `withTiming(v, { duration: 200, easing: Easing.bezier(0.34, 0.8, 0.34, 1) })` para effects.
   Rode no UI thread (worklets); nunca anime layout pesado por `setState` a cada frame.
 - **Flutter:** `SpringDescription.withDampingRatio(mass: 1, stiffness: 380, ratio: 0.8)`.
 
