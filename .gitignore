@@ -1,0 +1,9 @@
+# Resultados de avaliação e áreas de trabalho do skill-creator
+*-workspace/
+**/evals/results/
+
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+__pycache__/

@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: ajuste-animacao-sheet
+expected_outcome: |
+  Um hook Reanimated em que a posição do sheet usa mola (sem bounce excessivo), o fechamento é mais curto que a
+  abertura e sem overshoot, o scrim anima sem overshoot (timing ou mola criticamente amortecida), Reduce Motion
+  é respeitado, e um resumo que justifica os números escolhidos.

@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: desbloqueio-biometrico-expo
+expected_outcome: |
+  Um módulo que protege o token com armazenamento exigindo biometria (não só um prompt de UI), trata ausência
+  de biometria, lockout/cancelamento e invalidação por nova biometria com volta para senha, e um plano que
+  explica a diferença entre gate de interface e proteção criptográfica.

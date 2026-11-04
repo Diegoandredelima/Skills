@@ -1,0 +1,9 @@
+schema_version: "1.1"
+name: revisao-formulario-expo
+expected_outcome: |
+  Uma revisão priorizada da tela que aponta os problemas de cores hardcoded, ação primária no topo direito,
+  ação destrutiva com destaque de primária e sem confirmação, alvos de toque pequenos, falta de rótulos de
+  acessibilidade, teclado/SafeArea, altura fixa que corta texto com fonte grande e erro só por cor, com
+  correções concretas em React Native e uma versão corrigida do componente.
+context:
+  scaffold_script: place-files.sh

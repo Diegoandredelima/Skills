@@ -1,0 +1,15 @@
+{
+  "name": "skills-diego",
+  "description": "Skills do Diego para o Claude Code, criadas a partir de pesquisas próprias.",
+  "owner": {
+    "name": "Diego André de Lima"
+  },
+  "plugins": [
+    {
+      "name": "skills-diego",
+      "source": "./",
+      "description": "Conjunto mobile-ui-ux: design e engenharia de interface mobile (iOS/Android) — layout e navegação, design tokens, motion e haptics, acessibilidade WCAG 2.2 e segurança de UI.",
+      "version": "1.0.0"
+    }
+  ]
+}
