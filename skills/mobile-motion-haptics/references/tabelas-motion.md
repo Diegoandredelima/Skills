@@ -11,7 +11,7 @@
 | default-effects | 1.0 / 1600 | 230ms / 0% | `cubic-bezier(0.34, 0.80, 0.34, 1.00)` 200ms | 1.0 / 1600 | 230ms / 0% | idem |
 | slow-effects | 1.0 / 800 | 326ms / 0% | `cubic-bezier(0.34, 0.88, 0.34, 1.00)` 300ms | 1.0 / 800 | 326ms / 0% | idem |
 
-Os componentes M3 usam principalmente expressive fast-spatial e expressive fast-effects internamente.
+Os componentes M3 usam principalmente expressive fast-spatial e expressive fast-effects internamente (tempos de settle e percentuais de overshoot acima são valores analíticos derivados da equação da mola para massa = 1).
 Para web/motores sem mola: os fallbacks acima, ou a mola amostrada na função CSS `linear()` (até 40 pontos).
 
 ## SwiftUI: duração/bounce ↔ parâmetros físicos
@@ -33,11 +33,11 @@ Ex.: `Spring(duration: 0.5, bounce: 0.3)` → stiffness ≈ 157.9.
 
 Compose `spring()` padrão (fora dos tokens M3): stiffness 1500, damping crítico → ~240ms, 0% overshoot.
 
-## Conversão para Reanimated
+## Conversão para Reanimated (3.0+ / 4.x)
 
-`withSpring(target, { mass: 1, stiffness: k, dampingRatio: ζ })` (Reanimated 3.x aceita `dampingRatio`;
-em versões que só aceitam `damping`, use `damping = 2 × ζ × √(k × massa)`).
-Ex.: default-spatial expressive → `damping = 2 × 0.8 × √380 ≈ 31.2`.
+No `react-native-reanimated`, `withSpring` opera em dois modos **mutuamente exclusivos** (não combine `dampingRatio` com `stiffness`/`damping`, pois `duration` e `dampingRatio` sobrescrevem os parâmetros físicos):
+- **Modo físico (fiel aos tokens M3 `k` e `ζ`):** `withSpring(target, { mass: 1, stiffness: k, damping: 2 * ζ * Math.sqrt(k * 1) })`. Ex.: `default-spatial` expressive (`ζ = 0.8`, `k = 380`) → `damping = 2 × 0.8 × √380 ≈ 31.2`.
+- **Modo baseado em duração (Reanimated 3.0+):** `withSpring(target, { duration: 475, dampingRatio: 0.8 })`.
 
 ## Transições M3 (pares legados/fallback)
 
@@ -56,10 +56,10 @@ Fade do scrim: 300ms independente (sheets); 150ms iniciais no container transfor
 
 | Contexto | iOS | Android |
 | --- | --- | --- |
-| Toque leve, alinhamento, tick de roleta | `UIImpactFeedbackGenerator(style: .light)` / `.soft`; `UISelectionFeedbackGenerator`; `UICanvasFeedbackGenerator` (iOS 17.5+) | `performHapticFeedback` com `CLOCK_TICK`, `CALENDAR_DATE`, `SEGMENT_TICK`, `SEGMENT_FREQUENT_TICK`, `TEXT_HANDLE_MOVE` |
-| Ativar controle padrão | `.medium` | `CONFIRM`, `VibrationEffect.EFFECT_CLICK` / `EFFECT_DOUBLE_CLICK` |
-| Impacto firme, long press, colisão | `.heavy` / `.rigid` | `LONG_PRESS`, `GESTURE_START`, `EFFECT_HEAVY_CLICK` |
-| Sucesso / erro de validação | `UINotificationFeedbackGenerator` `.success/.warning/.error` | `CONFIRM` / `REJECT` |
+| Toque leve, alinhamento, tick de roleta | `UIImpactFeedbackGenerator(style: .light)` / `.soft`; `UISelectionFeedbackGenerator`; `UICanvasFeedbackGenerator` (iOS 17.5+) | `performHapticFeedback` com `CLOCK_TICK` (API 21+), `TEXT_HANDLE_MOVE` (API 27+), `SEGMENT_TICK` / `SEGMENT_FREQUENT_TICK` (API 34+) |
+| Ativar controle padrão | `.medium` | `CONFIRM` (API 30+), `VibrationEffect.EFFECT_CLICK` / `EFFECT_DOUBLE_CLICK` (API 29+) |
+| Impacto firme, long press, colisão | `.heavy` / `.rigid` | `LONG_PRESS` (API 3+), `GESTURE_START` (API 30+), `EFFECT_HEAVY_CLICK` (API 29+) |
+| Sucesso / erro de validação | `UINotificationFeedbackGenerator` `.success/.warning/.error` | `CONFIRM` / `REJECT` (API 30+) |
 | Padrões e texturas | Core Haptics (iOS 13+, iPhone 8+): intensidade e sharpness | `VibrationEffect` (API 26+; predefinidos API 29+; composição API 31+) |
 | Permissão / ciclo de vida | Nenhuma; `prepare()`/liberar; simulador não suporta Core Haptics | `HapticFeedbackConstants` sem permissão; `VibrationEffect` exige `android.permission.VIBRATE` |
 

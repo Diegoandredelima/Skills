@@ -49,11 +49,10 @@ Valores mais usados (massa 1):
 - **Compose:** `MotionScheme.expressive()` / `standard()` (API Expressive experimental, opt-in);
   `spring(dampingRatio = 0.8f, stiffness = 380f)`. O `spring()` padrão do Compose (fora do M3) é
   stiffness 1500 / damping crítico (~240ms, sem overshoot).
-- **SwiftUI:** `Spring(duration:bounce:)` — bounce 0 = crítico; até 1.0 mais elástico (≥ 0.3 = exagerado);
-  negativo = sobreamortecido. Presets: `.spring()` (~690ms, 1% overshoot), `.smooth` (sem overshoot),
-  `.snappy` (0.6%). Arrasto: `.interactiveSpring(response: 0.15, dampingFraction: 0.86, blendDuration: 0.25)`.
-- **React Native (Reanimated 3+):** `withSpring(v, { dampingRatio: 0.8, stiffness: 380 })` (spatial default
-  expressive); `withTiming(v, { duration: 200, easing: Easing.bezier(0.34, 0.8, 0.34, 1) })` para effects.
+- **SwiftUI:** `Spring(duration:bounce:)` (iOS 17+) — bounce 0 = crítico; até 1.0 mais elástico (≥ 0.3 = exagerado);
+  negativo = sobreamortecido. Presets: `.spring()` (~690ms, 1% overshoot), `.smooth` (iOS 17+, sem overshoot),
+  `.snappy` (iOS 17+, 0.6%). Arrasto: `.interactiveSpring(response: 0.15, dampingFraction: 0.86, blendDuration: 0.25)`.
+- **React Native (Reanimated 3.0+ / 4.x):** `withSpring` tem dois modos mutuamente exclusivos — **físico** `withSpring(v, { mass: 1, stiffness: 380, damping: 31.2 })` (onde `damping = 2 × ζ × √(k × mass)`) ou **por duração** (Reanimated 3.0+) `withSpring(v, { duration: 475, dampingRatio: 0.8 })` (não combine `dampingRatio` com `stiffness`/`damping`); `withTiming(v, { duration: 200, easing: Easing.bezier(0.34, 0.8, 0.34, 1) })` para effects.
   Rode no UI thread (worklets); nunca anime layout pesado por `setState` a cada frame.
 - **Flutter:** `SpringDescription.withDampingRatio(mass: 1, stiffness: 380, ratio: 0.8)`.
 
@@ -95,11 +94,11 @@ Háptico confirma ação, não decora. Mapeamento semântico:
 
 | Evento | iOS | Android | Expo |
 | --- | --- | --- | --- |
-| Tick, seleção, alinhamento a guia | `UISelectionFeedbackGenerator`, impact `.light`/`.soft` | `CLOCK_TICK`, `SEGMENT_TICK`, `TEXT_HANDLE_MOVE` | `selectionAsync()` |
-| Ativar controle (toggle, tap) | impact `.medium` | `CONFIRM` / `EFFECT_CLICK` | `impactAsync(Medium)` |
-| Long press, impacto firme | impact `.heavy` / `.rigid` | `LONG_PRESS`, `GESTURE_START`, `EFFECT_HEAVY_CLICK` | `impactAsync(Heavy)` |
-| Sucesso / aviso / erro | `UINotificationFeedbackGenerator` `.success/.warning/.error` | `CONFIRM` / `REJECT` | `notificationAsync(Success/Warning/Error)` |
-| Padrão contínuo/textura | Core Haptics (`CHHapticEngine`) | `VibrationEffect` composição (API 31+) | — |
+| Tick, seleção, alinhamento a guia | `UISelectionFeedbackGenerator`, impact `.light`/`.soft` | `CLOCK_TICK` (API 21+), `SEGMENT_TICK` (API 34+), `TEXT_HANDLE_MOVE` (API 27+) | `selectionAsync()` |
+| Ativar controle (toggle, tap) | impact `.medium` | `CONFIRM` (API 30+) / `EFFECT_CLICK` (API 29+) | `impactAsync(Medium)` |
+| Long press, impacto firme | impact `.heavy` / `.rigid` | `LONG_PRESS` (API 3+), `GESTURE_START` (API 30+), `EFFECT_HEAVY_CLICK` (API 29+) | `impactAsync(Heavy)` |
+| Sucesso / aviso / erro | `UINotificationFeedbackGenerator` `.success/.warning/.error` | `CONFIRM` / `REJECT` (API 30+) | `notificationAsync(Success/Warning/Error)` |
+| Padrão contínuo/textura | Core Haptics (`CHHapticEngine`, iOS 13+) | `VibrationEffect` composição (API 31+) | — |
 
 Regras:
 - **≥ 100ms** entre pulsos (senão vira zumbido). Padrões compostos: pausas de 250 / 500 / 1000ms.
