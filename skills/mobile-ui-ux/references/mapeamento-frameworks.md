@@ -56,7 +56,7 @@ As linhas de React Native/Expo acrescentam as bibliotecas usuais do ecossistema;
 | Compose | `MotionScheme.expressive()` / `standard()` (`@OptIn(ExperimentalMaterial3ExpressiveApi::class)`); `spring(dampingRatio, stiffness)`; `HapticFeedbackConstants` / `LocalHapticFeedback`. |
 | SwiftUI | `.spring(duration:bounce:)`, `.smooth`, `.snappy` (iOS 17+), `.interactiveSpring()`; `UIImpactFeedbackGenerator`, `UINotificationFeedbackGenerator`, `.sensoryFeedback(_:trigger:)` (iOS 17+), Core Haptics. |
 | Flutter | `SpringDescription` / `SpringSimulation`; `HapticFeedback.lightImpact()` etc. |
-| React Native/Expo | `react-native-reanimated` 3.0+ (`withSpring({ mass: 1, stiffness, damping })` no modo físico ou `withSpring({ duration, dampingRatio })` no modo por duração — não combinar os dois; `withTiming` com `Easing.bezier`); `useReducedMotion()` (3.0+) ou `AccessibilityInfo.isReduceMotionEnabled()`; `expo-haptics` (`impactAsync`, `notificationAsync`, `selectionAsync`). |
+| React Native/Expo | `react-native-reanimated` (`withSpring({ mass: 1, stiffness, damping })` no modo físico — passe `mass: 1` porque o `mass` padrão no 4.x é 4 — ou `withSpring({ duration, dampingRatio })` no modo por duração no Reanimated 3.2+ — não combinar os dois; `withTiming` com `Easing.bezier`); `useReducedMotion()` (3.0+) ou `AccessibilityInfo.isReduceMotionEnabled()`; `expo-haptics` (`impactAsync`, `notificationAsync`, `selectionAsync`). |
 
 ## Acessibilidade
 

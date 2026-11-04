@@ -12,7 +12,7 @@ A skill especializada de cada pilar tem o detalhe para corrigir.
   (iPad paisagem; ou Tab Bar flutuante adaptativa) / Extended Rail 256dp.
   *Verificação:* redimensionar janela no iPadOS 26, emulador dobrável, preview multi-dispositivo.
 - [ ] **Thumb zone e gesto de voltar.** Ação primária na metade inferior; destrutiva longe do polegar, com
-  confirmação e sem papel de primária. Predictive Back (Android 13/14 com `android:enableOnBackInvokedCallback="true"`; padrão no Android 15+) e back swipe (iOS) funcionando;
+  confirmação e sem papel de primária. Predictive Back (habilitado por padrão; `android:enableOnBackInvokedCallback="false"` apenas para sair; exige Activity 1.6.0+ / `OnBackPressedCallback` ou `PredictiveBackHandler`/`BackHandler` no Compose 1.8.0+, sem interceptar `onBackPressed`/`KEYCODE_BACK`; no Android 13/14 dependia de opção de desenvolvedor e do Android 15 em diante aparece para os apps que suportam) e back swipe (iOS) funcionando;
   `systemGestureExclusion()` em carrosséis horizontais.
   *Verificação:* uso com uma mão no maior telefone suportado; cancelar o gesto de voltar no meio.
 
