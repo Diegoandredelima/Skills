@@ -77,3 +77,9 @@ Ponto positivo a manter: cada especialista tem negativos que pertencem a uma ski
 `mobile-ui-security`, troca de hex por papéis em `mobile-layout-navigation`) — isso testa a separação entre elas.
 
 Pode gerar `auditoria/RELATORIO.md` e encerrar. Não faça push nem merge.
+
+## Ajuste de ativação — Fase 1 — APROVADO (05/11/2026)
+
+Conferido em `proj/phase1_saida.json` e `.err`: 8 quase acertos de `mobile-ui-security`, 3 execuções cada, 0
+ativações; nenhuma linha de limite de sessão no log (as saídas foram respostas normais com Glob/Bash/Write). As 6
+skills voltaram para `~/.claude/skills`. `mobile-ui-security` fica com 16/16 confiável. Pode seguir para a Fase 2.
