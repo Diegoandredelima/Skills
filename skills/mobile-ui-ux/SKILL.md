@@ -90,11 +90,4 @@ acessibilidade.
 Use `references/checklist-qa.md`: seis pilares (fundamentos/adaptação, componentes/layout, cores/tokens,
 motion/haptics, acessibilidade, segurança/privacidade), cada item com critério de aceitação e método de
 verificação. Ao relatar uma revisão, organize os achados por pilar, com severidade e o critério violado.
-
-## Fonte completa
-
-`references/guia-completo.md` é o texto integral da pesquisa (sem imagens). Consulte quando precisar de um
-número ou nuance que as skills resumiram. Ele **não foi editado** e tem divergências conhecidas, listadas na
-errata no topo do arquivo: quando ele e uma skill deste conjunto discordarem, vale a skill (conferida contra a
-documentação oficial em nov/2026). Os números colados às frases são citações da pesquisa original. Se uma API
-divergir da documentação oficial atual, a documentação oficial prevalece — avise o usuário da divergência.
+Se uma API divergir da documentação oficial atual, a documentação oficial prevalece — avise o usuário da divergência.
