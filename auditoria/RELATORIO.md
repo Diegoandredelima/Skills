@@ -91,3 +91,62 @@ Os arquivos `pesquisas/guia-ui-ux-engenharia-mobile.md` e `skills/mobile-ui-ux/r
 
 1. **Atualização opcional de `skills/mobile-ui-ux/references/guia-completo.md`:** por regra do plano, o arquivo `guia-completo.md` (cópia integral da pesquisa dentro da skill central) foi mantido sem edições. Como ele ainda contém as 13 divergências listadas na Seção 4 (como `M3ColorUtils.harmonize`, `SecKeyCreateRandomPair`, `CALENDAR_DATE` e `withSpring` combinando `dampingRatio` + `stiffness`), vale decidir se deseja aplicar um patch espelhando as correções da Fase 2 também em `skills/mobile-ui-ux/references/guia-completo.md` (mantendo apenas `pesquisas/guia-ui-ux-engenharia-mobile.md` como registro histórico imutável) ou se prefere remover `guia-completo.md` da pasta `references/` da skill para evitar que o modelo leia instruções conflitantes caso carregue todas as referências.
 2. **Versionamento ou limpeza da pasta `auditoria/` e `prompts/` antes do merge:** os artefatos de trabalho (`auditoria/inventario.md`, `auditoria/verificacao.md`, `auditoria/validacoes.md`, `auditoria/RELATORIO.md`, `auditoria/gatilhos/*.json` e `prompts/antigravity-melhorias-mobile-ui-ux.md`) estão fora do índice do Git (untracked) para manter o diff da branch `melhoria/verificacao-apis` restrito a `skills/*`. Após rodar a otimização de `description` no Claude Code com os arquivos de `auditoria/gatilhos/`, decida se deseja versionar a pasta `auditoria/` como histórico de QA do repositório ou descartá-la antes do merge em `main`.
+
+
+---
+
+## 7. Ativação (nov/2026)
+
+Medição com `claude -p` (modelo `claude-opus-5-5`, 3 execuções por pedido, limiar 0,5) sobre os 16 pedidos de cada skill em `auditoria/gatilhos/*.json`. Uma skill ativa quando o pedido a invoca ou lê o `SKILL.md`. As seis pastas `mobile-*` foram retiradas de `~/.claude/skills/` durante cada medição, para a versão instalada não competir com a testada.
+
+### Tabela final
+
+| Skill | Acerto | Positivos (devem ativar) | Quase acertos (não devem ativar) | Observação |
+| --- | --- | --- | --- | --- |
+| `mobile-ui-ux` | 16/16 | 8/8 | 8/8 | `description` alterada (antes 15/16) |
+| `mobile-layout-navigation` | 16/16 | 8/8 | 8/8 | `description` alterada (antes 15/16) |
+| `mobile-design-tokens` | 16/16 | 8/8 | 8/8 | sem alteração |
+| `mobile-motion-haptics` | 16/16 | 8/8 | 8/8 | sem alteração |
+| `mobile-accessibility` | 16/16 | 8/8 | 8/8 | sem alteração |
+| `mobile-ui-security` | 16/16 | 8/8 | 8/8 | sem alteração; quase acertos refeitos |
+
+Nenhum quase acerto ativou em nenhuma skill (0/3 em todos os 48). O menor índice entre os positivos foi 2/3, em um pedido de `mobile-ui-ux` (auditoria completa antes do TestFlight) e em um de `mobile-layout-navigation` (carrossel de borda a borda e Predictive Back). Ambos passam no limiar, mas são os pontos mais frágeis do conjunto.
+
+### Como as falhas foram tratadas
+
+1. **`mobile-ui-security`.** Na primeira rodada, os 8 quase acertos ficaram sem medição confiável, porque a sessão bateu no limite de uso (17 linhas `You've hit your session limit` no log). Os 8 foram medidos de novo isoladamente: 0 ativações em 24 execuções, sem linha de limite no log. Os positivos já tinham sido medidos antes do limite (3/3 em todos).
+2. **`mobile-ui-ux`.** Falhava (0/3) no pedido de replicar no Android, em Compose, telas de iPhone desenhadas no Figma. A `description` passou a cobrir portar ou adaptar telas entre plataformas e o handoff a partir do Figma. Resultado: 3/3 nesse pedido e 16/16 no total.
+3. **`mobile-layout-navigation`.** Falhava (0/3) no pedido da barra de abas do SwiftUI no iOS 26 (`Views/RootTabView.swift`). A `description` passou a cobrir migrar ou atualizar a navegação por abas para o iOS 26 / Liquid Glass. Uma primeira medição dos 16 pedidos foi descartada, pois a sessão bateu no limite. Na medição válida, o pedido foi de 0/3 para 3/3, e os outros 15 passaram, com os 8 quase acertos em 0/3.
+
+Nenhuma `description` cita o texto dos pedidos de teste. Todas seguem as regras do frontmatter (uma linha, menos de 1024 caracteres, sem dois-pontos seguido de espaço):
+
+| Skill | Tamanho da `description` |
+| --- | --- |
+| `mobile-ui-ux` | 867 caracteres |
+| `mobile-layout-navigation` | 800 caracteres |
+| `mobile-design-tokens` | 720 caracteres |
+| `mobile-motion-haptics` | 769 caracteres |
+| `mobile-accessibility` | 773 caracteres |
+| `mobile-ui-security` | 901 caracteres |
+
+### Descrições alteradas
+
+**`mobile-ui-ux`** (commit `9bacf34`). Trecho do parêntese de "Use esta skill sempre que...":
+
+- Antes: `(desenhar, implementar, revisar ou auditar UI/UX de app, escolher componentes nativos, adaptar layout para tablet/dobrável, preparar handoff design→dev, ou fazer revisão visual antes de publicar)`
+- Depois: `(desenhar, implementar, revisar ou auditar UI/UX de app, portar ou adaptar telas e designs de uma plataforma para a outra respeitando convenções nativas, orientar handoff design→dev a partir do Figma, escolher componentes nativos, adaptar layout para tablet/dobrável, ou fazer revisão visual antes de publicar)`
+
+**`mobile-layout-navigation`** (commit `59e5813`). Trecho final:
+
+- Antes: `Use sempre que for montar ou revisar a estrutura de uma tela de app, escolher ou dimensionar um componente, adaptar para tablet/dobrável/paisagem, ou corrigir conteúdo cortado por barra de sistema ou escondido pelo teclado — inclusive em React Native/Expo e Flutter.`
+- Depois: `Use sempre que for montar ou revisar a estrutura de uma tela de app, migrar ou atualizar navegação por abas para o iOS 26 / Liquid Glass ou Android, escolher ou dimensionar um componente, adaptar para tablet/dobrável/paisagem, ou corrigir conteúdo cortado por barra de sistema ou escondido pelo teclado — inclusive em SwiftUI, Compose, React Native/Expo e Flutter.`
+
+### Custo de contexto
+
+Removido `skills/mobile-ui-ux/references/guia-completo.md` (89 KB, cerca de 23.500 tokens) no commit `afdd74f`, junto com a seção "Fonte completa" do `SKILL.md` que apontava para ele. Isso resolve a decisão 1 da seção 6: o texto original continua só em `pesquisas/guia-ui-ux-engenharia-mobile.md`, e as divergências da seção 4 deixam de ser lidas pelo modelo. Com isso, as seis skills somam cerca de 20.800 tokens contando todas as referências, e a leitura de uma skill acionada custa em média entre 1.500 e 3.500 tokens. Cada `description` fica sempre carregada, a cerca de 190 tokens.
+
+### Limites desta medição
+
+- São 3 execuções por pedido e 16 pedidos por skill, uma amostra pequena: um 2/3 pode virar 1/3 em outra rodada.
+- Os pedidos foram escritos por nós. A taxa em uso real pode diferir, principalmente nos positivos com pouco vocabulário de mobile.
+- A medição vale para `claude-opus-5-5` e para a versão do Claude Code usada na rodada. Outro modelo ou outra versão pode ativar de forma diferente.
